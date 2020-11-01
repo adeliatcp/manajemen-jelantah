@@ -23,6 +23,31 @@ class Transaction extends CI_Controller
         parent::__construct();
         // disini lakukan untuk validasi apakah session admin ini bisa akses halaman ini
         // misal jika dia bukan type admin, maka redirect ke halaman "Ups kamu tyda bole akses"
+        
+        $this->load->library('session');
+
+        /**
+         * ini di buat pas login, generate session
+         * 
+         * $data_user = array(
+         *      'name' => 'blabla',
+         *      'email' => 'blabla',
+         *      'type' => 1,
+         *      etc ..
+         * 
+         * $this->session->set_userdata('data_user',$data_user);
+         */
+        
+
+        $user = $this->session->userdata('data_user');
+
+        if ($user == NULL) {
+            redirect('Auth/login');
+        }
+        
+        if ($user['type_user'] != 0) {
+            die(); // ganti dengan view -> kamu tidak bisa akses
+        }
     }
 
     // method - method yang diperlukan untuk fungsionalitas Dashboard
