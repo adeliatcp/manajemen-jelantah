@@ -37,7 +37,7 @@
                         <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
                             <form class="px-4 py-3" method="post" action="<?= base_url('auth/register'); ?>">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="id" name="id" placeholder="ID" value="<?= set_value('id'); ?>">
+                                    <input type="text" class="form-control" id="username" name="id" placeholder="Username" value="<?= set_value('username'); ?>">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-address-card"></span>
@@ -84,6 +84,14 @@
                                             <span class="fas fa-map-marked-alt"></span>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pilihsebagai" style="color:#863702 ;"> Daftar sebagai : </label>
+                                    <select class="form-control" name="pilihsebagai">">
+                                        <option value="1">Pelanggan</option>
+                                        <option value="2">Pengepul</option>
+                                        <option value="3">Admin</option>
+                                    </select>
                                 </div>
                                 <!-- /.social-auth-links -->
                                 <button type="submit" class="btn" style="background-color:#C45C00; color:white;">Daftar</button>

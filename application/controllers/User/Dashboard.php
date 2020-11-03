@@ -21,11 +21,30 @@ class Dashboard extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
+
+        $user = $this->session->userdata('id_role');
+
+        if ($user == NULL) {
+            redirect('auth/login');
+        }
+        if ($user !== '1') {
+            redirect('auth/login');
+        }
         // disini lakukan untuk validasi apakah session user ini bisa akses halaman ini
         // misal jika dia bukan type user, maka redirect ke halaman "Ups kamu tyda bole akses"
     }
 
     // method - method yang diperlukan untuk fungsionalitas Dashboard
+
+    function page_user()
+    {
+        if ($this->session->userdata('id_role') !== '1') {
+            redirect('auth/login', 'refresh');
+        } else {
+            redirect('user/dashboard');
+        }
+    }
 
     public function index()
     {

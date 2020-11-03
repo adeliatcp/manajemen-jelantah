@@ -21,11 +21,18 @@ class History extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // disini lakukan untuk validasi apakah session admin ini bisa akses halaman ini
-        // misal jika dia bukan type admin, maka redirect ke halaman "Ups kamu tyda bole akses"
+        $this->load->library('session');
+
+        $user = $this->session->userdata('id_role');
+
+        if ($user == NULL) {
+            redirect('auth/login');
+        }
+        if ($user !== '2') {
+            redirect('auth/login');
+        }
     }
 
-    // method - method yang diperlukan untuk fungsionalitas Dashboard
 
     public function index()
     {

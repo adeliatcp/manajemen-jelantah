@@ -21,11 +21,17 @@ class Settings extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // disini lakukan untuk validasi apakah session admin ini bisa akses halaman ini
-        // misal jika dia bukan type admin, maka redirect ke halaman "Ups kamu tyda bole akses"
-    }
+        $this->load->library('session');
 
-    // method - method yang diperlukan untuk fungsionalitas Dashboard
+        $user = $this->session->userdata('id_role');
+
+        if ($user == NULL) {
+            redirect('auth/login');
+        }
+        if ($user !== '1') {
+            redirect('auth/login');
+        }
+    }
 
     public function index()
     {

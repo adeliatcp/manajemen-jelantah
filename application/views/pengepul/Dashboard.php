@@ -68,7 +68,7 @@
                         </a>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('Home'); ?>" class=" dropdown-item">
+                        <a href="<?= base_url('auth/logout'); ?>" class=" dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
                                 <div class="media-body">
