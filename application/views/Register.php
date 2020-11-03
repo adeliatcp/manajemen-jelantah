@@ -37,7 +37,7 @@
                         <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
                             <form class="px-4 py-3" method="post" action="<?= base_url('auth/register'); ?>">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="username" name="id" placeholder="Username" value="<?= set_value('username'); ?>">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-address-card"></span>
