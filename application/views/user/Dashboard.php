@@ -199,7 +199,7 @@
                         <div class="card">
                             <div class="card-header" style="background-color:#D57E1B ;">
                                 <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE; text-align:center; "><b>Daftar Perangkat Anda</b></h2>
-                                <a class="btn btn-sm" href="device/adddevice" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>+ tambah perangkat</b></a>
+                                <a class="btn btn-sm" href="device/adddevice" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>+ perangkat</b></a>
                             </div>
                             <div class=" card-body p-1">
                                 <table class="table table projects" style="size:center;">
