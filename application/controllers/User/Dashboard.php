@@ -48,8 +48,15 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $this->load->view('user/dashboard');
+
+        $this->load->model('m_device');
+        $data["getbyId"] = $this->m_device->getbyId('id_user');
+        $this->load->view('user/dashboard', $data);
     }
+
+
+
+
 
     // anything else just declare new function
 

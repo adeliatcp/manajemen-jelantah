@@ -19,6 +19,7 @@ class Device extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_device');
 
         $user = $this->session->userdata('id_role');
 
@@ -32,7 +33,54 @@ class Device extends CI_Controller
 
     public function index()
     {
+        $this->load->view('user/device');
     }
+
+    public function adddevice()
+    {
+        $this->load->view('user/adddevice');
+    }
+
+    public function tambah()
+    {
+        $data = array(
+            'id' =>  $this->input->post('id'),
+            'id_user' => $this->session->id,
+            'alamat'       =>  $this->input->post('alamat')
+
+        );
+        $this->db->insert('device', $data);
+        redirect('user/dashboard');
+    }
+
+    public function deletedevice($id)
+    {
+        $data = array('id' => $id);
+        $this->m_device->deletedata($data, 'device');
+        redirect('user/dashboard');
+    }
+
+    public function editdevice() //$id
+    {
+        //$this->load->model('m_device');
+        //  $this->m_device->editdata($id);
+        // $this->input->get_post('id');
+        // $this->input->get_post('alamat');
+        $this->load->view('user/editdevice');
+    }
+
+    public function prosesupdate()
+    {
+        $data = array(
+            'id_user' => $this->session->id,
+            'alamat'       =>  $this->input->post('alamat')
+
+        );
+        $this->db->update('device', $data);
+        redirect('user/dashboard');
+    }
+
+
 
     // anything else just declare new function
 

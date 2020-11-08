@@ -158,7 +158,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-10">
-
+                            <h1 style=" font-size: 30px; font-family:Segoe UI; color: #673E27;">Selamat Datang!</h1>
                         </div>
                         <div class="col-sm-6">
                         </div>
@@ -185,77 +185,78 @@
                     <br><br><br></br>
                     <p></p>
                     <!-- Default box -->
-                    <div class="card">
-                        <div class="card-header" style="background-color:#D57E1B ;">
-                            <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE;">Daftar Pemesan Penjemputan</h2>
+                    <div class="col-md-11" style="margin:auto;">
+                        <div class="card">
+                            <div class="card-header" style="background-color:#D57E1B ;">
+                                <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE;"><b>Daftar Pemesan Penjemputan</b></h2>
+                            </div>
+                            <div class="card-body p-0">
+                                <table class="table table projects">
+                                    <thead>
+                                        <tr>
+
+                                            <th style="width: 18%">
+                                                ID Pelanggan
+                                            </th>
+                                            <th style="width: 20%">
+                                                Alamat
+                                            </th>
+
+                                            <th style="width: 18%">
+                                                Telepon
+                                            </th>
+                                            <th style="width: 15%">
+                                                Harga
+                                            </th>
+                                            <th style="width: 10%" class="text-center">
+                                                Aksi
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+
+                                            <td>
+                                                <a>
+                                                    lumpianur
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a>
+                                                    Jl. Sumbersari No. 20
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a>
+                                                    081234567890
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a>
+                                                    Rp 56.000,-
+                                                </a>
+                                            </td>
+
+                                            <td class="project-state">
+                                                <a class="btn btn-success btn-sm" href="#">
+                                                    <i class="fas fa-check">
+                                                    </i>
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" href="#">
+                                                    <i class="fas fa-times">
+                                                    </i>
+
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <div class="card-body p-0">
-                            <table class="table table projects">
-                                <thead>
-                                    <tr>
-
-                                        <th style="width: 20%">
-                                            ID Pelanggan
-                                        </th>
-                                        <th style="width: 20%">
-                                            Alamat
-                                        </th>
-
-                                        <th style="width: 18%">
-                                            Telepon
-                                        </th>
-                                        <th style="width: 18%">
-                                            Harga
-                                        </th>
-                                        <th style="width: 8%" class="text-center">
-                                            Aksi
-                                        </th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-
-                                        <td>
-                                            <a>
-                                                lumpianur
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Jl. Sumbersari No. 20
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                081234567890
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Rp 56.000,-
-                                            </a>
-                                        </td>
-
-                                        <td class="project-state">
-                                            <a class="btn btn-success btn-sm" href="#">
-                                                <i class="fas fa-check">
-                                                </i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="fas fa-times">
-                                                </i>
-
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-
                         </form>
 
                     </div>

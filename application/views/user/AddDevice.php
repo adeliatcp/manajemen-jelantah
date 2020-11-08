@@ -167,7 +167,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 30px; font-family:Segoe UI; color: #673E27;">Selamat Datang!</h1>
+                            <p></p>
+                            <h1 style=" font-size: 30px; font-family:Segoe UI; color: #673E27;">Penambahan Perangkat</h1>
+                            <p></p>
                         </div>
                         <div class="col-sm-7">
 
@@ -178,99 +180,42 @@
             </section>
 
             <!-- Main content -->
+
             <section class="content">
                 <div class="container-fluid">
-                    <div class="col-md-3 col-sm-6 col-12" style="float:right">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-warning"><i class="fas fa-money-bill-wave"></i></span>
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-lg-7" style="float:none;margin:auto;">
+                            <!-- general form elements -->
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form role="form" action="<?php echo base_url('user/device/tambah'); ?>" method="POST">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="InputID" style="color: #474747;">ID Perangkat</label>
+                                            <input type="text" class="form-control" id="ID" name="id" placeholder="ID Perangkat">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputNamarek" style="color: #474747;">Alamat Perangkat</label>
+                                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat Perangkat">
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <button type="submit" class="btn btn-sm" style="background-color: #FF951B; color: white;" value="Simpan">Tambah</button>
+                                    </div>
 
-                            <div class="info-box-content">
-                                <span class="info-box-text">Saldo Anda</span>
-                                <span class="info-box-number">Rp 56.000,-</span>
+                                </form>
                             </div>
-                            <!-- /.info-box-content -->
+                            <!-- /.card -->
                         </div>
-                        <!-- /.info-box -->
                     </div>
-                    <br><br><br></br>
-                    <p></p>
-                    <!-- Default box -->
-                    <div class="col-md-9" style="margin:auto;">
-                        <div class="card">
-                            <div class="card-header" style="background-color:#D57E1B ;">
-                                <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE; text-align:center; "><b>Daftar Perangkat Anda</b></h2>
-                                <a class="btn btn-sm" href="device/adddevice" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>+ perangkat</b></a>
-
-                            </div>
-                            <div class=" card-body p-1">
-                                <table class="table table projects" style="size:center;">
-                                    <thead>
-                                        <tr>
-
-                                            <th style="width: 4%" class="text-center">
-                                                ID Perangkat
-                                            </th>
-                                            <th style="width: 5%" class="text-center">
-                                                Alamat
-                                            </th>
-                                            <th style="width: 5%" class="text-center">
-                                                Aksi
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        if ($getbyId->num_rows() > 0) {
-                                            foreach ($getbyId->result() as $row) {
-                                        ?>
-                                                <tr>
-                                                    <td class="text-center">
-                                                        <?php echo $row->id; ?>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <?php echo $row->alamat; ?>
-                                                    </td>
-                                                    <td class="project-state">
-                                                        <a class="btn btn-success btn-sm" href="device">
-                                                            <i class="fas fa-eye">
-                                                            </i>
-                                                        </a>
-                                                        <?php echo anchor('user/device/deletedevice/' . $row->id, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash">
-                                                            </i>
-                                                        </div>') ?>
-                                                        <a class="btn btn-info btn-sm" href="device/editdevice">
-                                                            <i class="fas fa-pen">
-                                                            </i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            <?php }
-                                        } else {
-                                            ?>
-                                            <tr>
-                                                <td>no data found</td>
-                                            </tr>
-                                        <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                    <tfoot>
-                                    </tfoot>
-                                </table>
-
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-
-                        </form>
-                        <!-- /.card-footer -->
-                    </div>
-                    <!-- /.card -->
+                    <br></br>
+                    <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
             </section>
-            <!-- /.content -->
         </div>
+        <!-- /.content -->
+
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.5</div>

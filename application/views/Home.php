@@ -36,7 +36,6 @@
 
             <div class="logo mr-auto">
                 <h1 class="text-light"><a href="<?= base_url() ?>template/index.html"><span>SMPJ</span></a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
                 <a href="index.html"><img src="<?= base_url() ?>template/assets/img/logo.png" alt="" class="img-fluid"></a>
             </div>
 
@@ -44,9 +43,7 @@
                 <ul>
                     <li class="active"><a href="#header">Beranda</a></li>
                     <li><a href="#about">Tentang SPMJ</a></li>
-                    <!-- <li><a href="#services">Servis</a></li> -->
                     <li><a href="#faq">Tanya Jawab</a></li>
-                    <!-- <li><a href="#footer">Kontak Kami</a></li> -->
 
                     <li class="get-started"><a href="<?= base_url('Auth/login'); ?>">Masuk</a></li>
                     <li class="get-started"><a href="<?= base_url('Auth/register'); ?>">Daftar</a></li>
@@ -75,8 +72,9 @@
 
     </section><!-- End Hero -->
 
+
+    <!-- ======= About Section ======= -->
     <main id="main">
-        <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
 

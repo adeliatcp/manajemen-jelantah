@@ -159,7 +159,6 @@
             </div>
         </aside>
 
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -167,7 +166,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 30px; font-family:Segoe UI; color: #673E27;">Selamat Datang!</h1>
+                            <h1 style=" font-size: 30px; font-family:Segoe UI; color: #673E27;">Grafik Perangkat Tampung Minyak Jelantah</h1>
                         </div>
                         <div class="col-sm-7">
 
@@ -180,110 +179,49 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div class="col-md-3 col-sm-6 col-12" style="float:right">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-warning"><i class="fas fa-money-bill-wave"></i></span>
+                    <div class="card card-warning card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="far fa-chart-bar"></i>
+                                Grafik Perangkat
+                            </h3>
 
-                            <div class="info-box-content">
-                                <span class="info-box-text">Saldo Anda</span>
-                                <span class="info-box-number">Rp 56.000,-</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <br><br><br></br>
-                    <p></p>
-                    <!-- Default box -->
-                    <div class="col-md-9" style="margin:auto;">
-                        <div class="card">
-                            <div class="card-header" style="background-color:#D57E1B ;">
-                                <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE; text-align:center; "><b>Daftar Perangkat Anda</b></h2>
-                                <a class="btn btn-sm" href="device/adddevice" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>+ perangkat</b></a>
-
-                            </div>
-                            <div class=" card-body p-1">
-                                <table class="table table projects" style="size:center;">
-                                    <thead>
-                                        <tr>
-
-                                            <th style="width: 4%" class="text-center">
-                                                ID Perangkat
-                                            </th>
-                                            <th style="width: 5%" class="text-center">
-                                                Alamat
-                                            </th>
-                                            <th style="width: 5%" class="text-center">
-                                                Aksi
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        if ($getbyId->num_rows() > 0) {
-                                            foreach ($getbyId->result() as $row) {
-                                        ?>
-                                                <tr>
-                                                    <td class="text-center">
-                                                        <?php echo $row->id; ?>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <?php echo $row->alamat; ?>
-                                                    </td>
-                                                    <td class="project-state">
-                                                        <a class="btn btn-success btn-sm" href="device">
-                                                            <i class="fas fa-eye">
-                                                            </i>
-                                                        </a>
-                                                        <?php echo anchor('user/device/deletedevice/' . $row->id, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash">
-                                                            </i>
-                                                        </div>') ?>
-                                                        <a class="btn btn-info btn-sm" href="device/editdevice">
-                                                            <i class="fas fa-pen">
-                                                            </i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            <?php }
-                                        } else {
-                                            ?>
-                                            <tr>
-                                                <td>no data found</td>
-                                            </tr>
-                                        <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                    <tfoot>
-                                    </tfoot>
-                                </table>
-
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                                </button>
                             </div>
                         </div>
-                        <!-- /.card-body -->
-
-                        </form>
-                        <!-- /.card-footer -->
+                        <div class="card-body">
+                            <div id="donut-chart" style="height: 300px;"></div>
+                        </div>
+                        <!-- /.card-body-->
+                        <a class="btn btn-sm" href="order" style="background-color: #FF951B; color: white;">Pesan Penjemputan</a>
                     </div>
+
                     <!-- /.card -->
                 </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
+                <!-- /.col -->
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.5</div>
-            <strong>Copyright &copy; 2020
-                <a>Adelia</a>.</strong>
-            All rights reserved.
-        </footer>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.5</div>
+        <strong>Copyright &copy; 2020
+            <a>Adelia</a>.</strong>
+        All rights reserved.
+    </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

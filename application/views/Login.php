@@ -31,7 +31,7 @@
                     <img src="<?= base_url() ?>template/assets/img/login-img.png" class="img-fluid" alt="" data-aos="zoom-in">
                 </div>
                 <div class="col-lg-7 pt-4 pt-lg-0">
-                    <h4 style="color:#863702;">Login</h4>
+                    <h4 style="color:#863702;">Sudah punya akun? Silahkan login dulu!</h4>
                     <div class="row">
                         <div class="col-md-10" data-aos="fade-up" data-aos-delay="100">
                             <form class="px-4 py-3" method="POST" action="<?= base_url('auth/login_user'); ?>">
@@ -61,7 +61,7 @@
                                 <p></p>
 
                                 <p class="mb-0">
-                                    <a href="<?= base_url('auth/register'); ?>" class="text" style="color:#2B2B2B;">Belum punya akun? <b>Daftar akun.</b></a>
+                                    <a href="<?= base_url('auth/register'); ?>" class="text" style="color:#2B2B2B;">Belum punya akun? <b>Daftar akun</b></a>
                                 </p>
                             </form>
                             <div class=" dropdown-divider">
