@@ -26,27 +26,17 @@ class Dashboard extends CI_Controller
         $user = $this->session->userdata('id_role');
 
         if ($user == NULL) {
-            redirect('auth/login');
+            redirect('auth/login', 'refresh');
         }
         if ($user !== '2') {
-            redirect('auth/login');
+            redirect('auth/login', 'refresh');
         }
     }
 
     // method - method yang diperlukan untuk fungsionalitas Dashboard
-    function page_pengepul()
-    {
-
-        if ($this->session->userdata('id_role') !== '2') {
-            redirect('auth/login', 'refresh');
-        } else {
-            redirect('pengepul/dashboard');
-        }
-    }
 
     public function index()
     {
-
         $this->load->view('pengepul/dashboard');
     }
 

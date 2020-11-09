@@ -49,11 +49,11 @@ class Auth extends CI_Controller
             }
             $this->session->set_userdata($session);
             if ($this->session->userdata('id_role') == '1') {
-                redirect('user/dashboard/page_user');
+                redirect('user');
             } else if ($this->session->userdata('id_role') == '2') {
-                redirect('pengepul/dashboard/page_pengepul');
+                redirect('pengepul');
             } else if ($this->session->userdata('id_role') == '3') {
-                redirect('admin/dashboard/page_admin');
+                redirect('admin');
             } else {
                 $this->session->set_flashdata('message', 'akun anda tidak terdaftar');
                 redirect('auth/login');
@@ -132,15 +132,6 @@ class Auth extends CI_Controller
      * 
      * karena nanti method methodnya ada login, ada register, dll.
      */
-
-    //  die();
-
-    // blok ini ke bawah gak akan dieksekusi karena die, hapus die kalau sudah dibuat logika login nya
-    // $data_user = array(
-    //   'name' => $name,
-    // 'email' => $password,
-    // 'type' => 1,
-    // );
 
     // $this->session->set_userdata('data_user', $data_user);
     //}

@@ -26,10 +26,10 @@ class Dashboard extends CI_Controller
         $user = $this->session->userdata('id_role');
 
         if ($user == NULL) {
-            redirect('auth/login');
+            redirect('auth/login', 'refresh');
         }
         if ($user !== '1') {
-            redirect('auth/login');
+            redirect('auth/login', 'refresh');
         }
         // disini lakukan untuk validasi apakah session user ini bisa akses halaman ini
         // misal jika dia bukan type user, maka redirect ke halaman "Ups kamu tyda bole akses"
@@ -37,26 +37,12 @@ class Dashboard extends CI_Controller
 
     // method - method yang diperlukan untuk fungsionalitas Dashboard
 
-    function page_user()
-    {
-        if ($this->session->userdata('id_role') !== '1') {
-            redirect('auth/login', 'refresh');
-        } else {
-            redirect('user/dashboard');
-        }
-    }
-
     public function index()
     {
-
         $this->load->model('m_device');
-        $data["getbyId"] = $this->m_device->getbyId('id_user');
+        $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $this->load->view('user/dashboard', $data);
     }
-
-
-
-
 
     // anything else just declare new function
 

@@ -12,14 +12,15 @@ class m_device extends CI_Model
         $this->load->library('session');
     }
 
-    public function getbyId()
+    public function getbyId($id_user)
     {
-        $data = array(
-            'id_user' => $this->session->id
+        $condition = array(
+            'id_user' => $id_user
         );
-        $this->db->where($data);
-        $query = $this->db->get('device', $data);
-        return $query;
+        $this->db->from('device');
+        $this->db->where($condition);
+        // https://codeigniter.com/userguide3/database/results.html
+        return $this->db->get();
     }
 
     public function deletedata($data, $table)
@@ -28,15 +29,15 @@ class m_device extends CI_Model
         $this->db->delete($table);
     }
 
-    function editdata()
+    function editdata($id_device, $id_user = null)
     {
-        $id = $this->input->post('id');
-        $alamat = $this->input->post('alamat');
-        $data["editdata"] = $id;
-        $data["editdata"] = $alamat;
-        $this->db->where('id', $id);
-        $query = $this->db->get('device');
-        return $query;
+        $condition = [
+            'id' => $id_device
+        ];
+        if($id_user != null) $condition += ['id_user' => $id_user];
+        $this->db->from('device');
+        $this->db->where($condition);
+        return $this->db->get();
     }
 }
  

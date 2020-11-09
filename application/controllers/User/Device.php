@@ -47,7 +47,6 @@ class Device extends CI_Controller
             'id' =>  $this->input->post('id'),
             'id_user' => $this->session->id,
             'alamat'       =>  $this->input->post('alamat')
-
         );
         $this->db->insert('device', $data);
         redirect('user/dashboard');
@@ -60,13 +59,11 @@ class Device extends CI_Controller
         redirect('user/dashboard');
     }
 
-    public function editdevice() //$id
+    public function editdevice($id_device)
     {
-        //$this->load->model('m_device');
-        //  $this->m_device->editdata($id);
-        // $this->input->get_post('id');
-        // $this->input->get_post('alamat');
-        $this->load->view('user/editdevice');
+        $this->load->model('m_device');
+        $data['device'] = $this->m_device->editdata($id_device);
+        $this->load->view('user/editdevice', $data);
     }
 
     public function prosesupdate()
@@ -74,7 +71,6 @@ class Device extends CI_Controller
         $data = array(
             'id_user' => $this->session->id,
             'alamat'       =>  $this->input->post('alamat')
-
         );
         $this->db->update('device', $data);
         redirect('user/dashboard');

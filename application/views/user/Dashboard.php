@@ -199,13 +199,12 @@
                         <div class="card">
                             <div class="card-header" style="background-color:#D57E1B ;">
                                 <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE; text-align:center; "><b>Daftar Perangkat Anda</b></h2>
-                                <a class="btn btn-sm" href="device/adddevice" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>+ perangkat</b></a>
+                                <a class="btn btn-sm" href="device/adddevice" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>tambah perangkat</b></a>
                             </div>
                             <div class=" card-body p-1">
                                 <table class="table table projects" style="size:center;">
                                     <thead>
                                         <tr>
-
                                             <th style="width: 4%" class="text-center">
                                                 ID Perangkat
                                             </th>
@@ -237,17 +236,16 @@
                                                         <?php echo anchor('user/device/deletedevice/' . $row->id, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash">
                                                             </i>
                                                         </div>') ?>
-                                                        <a class="btn btn-info btn-sm" href="device/editdevice">
-                                                            <i class="fas fa-pen">
+                                                        <?php echo anchor('user/device/edit/' . $row->id, '<div class="btn btn-info btn-sm"><i class="fas fa-pen">
                                                             </i>
-                                                        </a>
+                                                        </div>') ?>
                                                     </td>
                                                 </tr>
                                             <?php }
                                         } else {
                                             ?>
                                             <tr>
-                                                <td>no data found</td>
+                                                <td>Tidak ada data</td>
                                             </tr>
                                         <?php
                                         }
@@ -292,7 +290,7 @@
     <script src="<?= base_url() ?>template/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -320,8 +318,6 @@
     <script src="<?= base_url() ?>template/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url() ?>template/dist/js/demo.js"></script>
-
-
 </body>
 
 </html>

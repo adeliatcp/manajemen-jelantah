@@ -190,35 +190,27 @@
                             <div class="card">
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <!--
-                                 ?php
-                                foreach ($editdata as $row) {
-                               
-                                    <form role="form">
+                                <form role="form" action="prosesupdate" method="post">
+                                    <?php
+                                        if ($device->num_rows() > 0) {
+                                            foreach ($device->result() as $row) {
+                                    ?>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="id" style="color: #474747;">ID Perangkat</label>
-                                                <input type="text" class="form-control" id="id" name="id" value="<?php echo $row->$id ?>">
+                                                <input type="text" disabled class="form-control" id="id" name="id" value="<?php echo $row->id ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="alamat" style="color: #474747;">Alamat Perangkat</label>
-                                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $row->$alamat ?>">
+                                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $row->alamat ?>">
                                             </div>
-                                            ?php } ?> -->
-
-                                <form role="form" action="prosesupdate" method="post">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="id" style="color: #474747;">ID Perangkat</label>
-                                            <input type="text" class="form-control" id="id" name="id">
+                                            <!-- /.card-body -->
+                                            <button type=" submit" name="edit" class="btn btn-sm" style="background-color: #FF951B; color: white;">Ubah</button>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="alamat" style="color: #474747;">Alamat Perangkat</label>
-                                            <input type="text" class="form-control" id="alamat" name="alamat">
-                                        </div>
-                                        <!-- /.card-body -->
-                                        <button type=" submit" name="edit" class="btn btn-sm" style="background-color: #FF951B; color: white;">Ubah</button>
-                                    </div>
+                                    <?php
+                                            }
+                                        }
+                                    ?>
                                 </form>
 
                             </div>
@@ -254,7 +246,7 @@
     <script src="<?= base_url() ?>template/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
