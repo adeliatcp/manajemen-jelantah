@@ -22,6 +22,7 @@ class Settings extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_settings');
 
         $user = $this->session->userdata('id_role');
 
@@ -35,9 +36,37 @@ class Settings extends CI_Controller
 
     public function index()
     {
-
-        $this->load->view('user/settings');
+        $data["getdatabyId"] = $this->m_settings->getdatabyId($this->session->id);
+        $this->load->view('user/settings', $data);
     }
+
+    public function update_validation()
+    {
+
+        $id_user = $this->input->post('id');
+        $username = $this->input->post('username');
+        $name = $this->input->post('name');
+        $email = $this->input->post('email');
+        $telp = $this->input->post('telp');
+        $address = $this->input->post('address');
+
+        $data = array(
+            'id' => $id_user,
+            'username' => $username,
+            'name' => $name,
+            'email' => $email,
+            'telp' => $telp,
+            'address' => $address
+
+        );
+        $where = array(
+            'id' => $id_user
+        );
+
+        $this->m_settings->update($where, $data, 'user');
+        redirect('user/settings');
+    }
+
 
     // anything else just declare new function
 

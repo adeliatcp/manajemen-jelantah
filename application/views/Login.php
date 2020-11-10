@@ -34,7 +34,7 @@
                     <h4 style="color:#863702;">Sudah punya akun? Silahkan login dulu!</h4>
                     <div class="row">
                         <div class="col-md-10" data-aos="fade-up" data-aos-delay="100">
-                            <form class="px-4 py-3" method="POST" action="<?= base_url('auth/login_user'); ?>">
+                            <form class="px-4 py-3" method="POST" action="<?= base_url('auth/login_validation'); ?>">
                                 <div class="input-group mb-3">
                                     <input type="ID" class="form-control" id="username" name="username" placeholder="Username" value="<?= set_value('username'); ?>" required oninvalid="this.setCustomValidity('')" oninput="setCustomValidity('Cek kembali Username / Password anda!')">
                                     <div class="input-group-append">

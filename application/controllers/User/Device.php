@@ -66,13 +66,20 @@ class Device extends CI_Controller
         $this->load->view('user/editdevice', $data);
     }
 
-    public function prosesupdate()
+    public function update_validation()
     {
+        $id_device = $this->input->post('id');
+        $alamat = $this->input->post('alamat');
+
         $data = array(
-            'id_user' => $this->session->id,
-            'alamat'       =>  $this->input->post('alamat')
+            'alamat' => $alamat
+
         );
-        $this->db->update('device', $data);
+        $where = array(
+            'id' => $id_device
+        );
+
+        $this->m_device->update($where, $data, 'device');
         redirect('user/dashboard');
     }
 

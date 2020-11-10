@@ -167,33 +167,38 @@
                             <div class="card">
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form">
+                                <form role="form" action="settings/update_validation" method="post">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="InputID">ID Admin</label>
-                                            <input type="text" class="form-control" id="ID" name="id" placeholder="ID Admin">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputAlamat">Alamat</label>
-                                            <input type="text" class="form-control" id="Address" name="address" placeholder="Alamat">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputNama">Nama</label>
-                                            <input type="text" class="form-control" id="Name" name="name" placeholder="Nama">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputEmail">Email</label>
-                                            <input type="text" class="form-control" id="Email" name="email" placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputTelp">Telepon</label>
-                                            <input type="text" class="form-control" id="Telp" name="telp" placeholder="Telepon">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputPassword">Password</label>
-                                            <input type="text" class="form-control" id="Password" name="password" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
+                                        <?php
+                                        if ($getdatabyId->num_rows() > 0) {
+                                            foreach ($getdatabyId->result() as $row) {
+                                        ?>
+                                                <div class="form-group">
+                                                    <label for="InputID">ID</label>
+                                                    <input type="text" class="form-control" id="ID" name="id" value="<?php echo $row->id ?>" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="InputID">Username</label>
+                                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo $row->username ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="InputNama">Nama</label>
+                                                    <input type="text" class="form-control" id="Name" name="name" value="<?php echo $row->name ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="InputEmail">Email</label>
+                                                    <input type="text" class="form-control" id="Email" name="email" value="<?php echo $row->email ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="InputTelp">Telepon</label>
+                                                    <input type="text" class="form-control" id="Telp" name="telp" value="<?php echo $row->telp ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="InputAlamat">Alamat</label>
+                                                    <input type="text" class="form-control" id="Address" name="address" value="<?php echo $row->address ?>">
+                                                </div>
+
+                                                <!--  <div class="form-group">
                                             <label for="InputFoto">Foto Profil</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
@@ -201,50 +206,54 @@
                                                     <label class="custom-file-label" for="InputFile">Pilih Foto</label>
                                                 </div>
 
-                                            </div>
-                                        </div>
-
+                                            </div>-->
                                     </div>
-                                    <!-- /.card-body -->
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn" style="background-color: #FF951B; color: white;">
-                                            Ubah Data
-                                        </button> <br></br>
-                                        <button type="delete" class="btn btn-danger">
-                                            Hapus Akun
-                                        </button>
-                                    </div>
-                                </form>
                             </div>
-                            <br></br>
-                            <!-- /.card -->
+                            <!-- /.card-body -->
 
-
-
-                            <!-- /.card -->
+                            <div class="card-footer">
+                                <button type="submit" class="btn" style="background-color: #FF951B; color: white;">
+                                    Ubah Data
+                                </button> <br></br>
+                                <button type="delete" class="btn btn-danger">
+                                    Hapus Akun
+                                </button>
+                            </div>
+                    <?php
+                                            }
+                                        }
+                    ?>
+                    </form>
                         </div>
-                        <!--/.col (right) -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block"></div>
-            <strong>Copyright &copy; 2020
-                <a>Adelia</a>.</strong>
-            All rights reserved.
-        </footer>
+                        <br></br>
+                        <!-- /.card -->
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+
+
+                        <!-- /.card -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block"></div>
+        <strong>Copyright &copy; 2020
+            <a>Adelia</a>.</strong>
+        All rights reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

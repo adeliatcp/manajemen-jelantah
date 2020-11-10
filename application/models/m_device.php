@@ -29,12 +29,19 @@ class m_device extends CI_Model
         $this->db->delete($table);
     }
 
+
+    public function update($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
+
     function editdata($id_device, $id_user = null)
     {
-        $condition = [
+        $condition = array(
             'id' => $id_device
-        ];
-        if($id_user != null) $condition += ['id_user' => $id_user];
+        );
+        if ($id_user != null) $condition += ['id_user' => $id_user];
         $this->db->from('device');
         $this->db->where($condition);
         return $this->db->get();

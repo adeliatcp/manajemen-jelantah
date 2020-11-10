@@ -190,26 +190,26 @@
                             <div class="card">
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" action="prosesupdate" method="post">
+                                <form role="form" action="<?php echo base_url() . 'user/device/update_validation'; ?>" method="post">
                                     <?php
-                                        if ($device->num_rows() > 0) {
-                                            foreach ($device->result() as $row) {
+                                    if ($device->num_rows() > 0) {
+                                        foreach ($device->result() as $row) {
                                     ?>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="id" style="color: #474747;">ID Perangkat</label>
-                                                <input type="text" disabled class="form-control" id="id" name="id" value="<?php echo $row->id ?>">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="id" style="color: #474747;">ID Perangkat</label>
+                                                    <input type="text" class="form-control" id="id" name="id" value="<?php echo $row->id ?>" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="alamat" style="color: #474747;">Alamat Perangkat</label>
+                                                    <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $row->alamat ?>">
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <button type=" submit" name="edit" class="btn btn-sm" style="background-color: #FF951B; color: white;">Ubah</button>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="alamat" style="color: #474747;">Alamat Perangkat</label>
-                                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $row->alamat ?>">
-                                            </div>
-                                            <!-- /.card-body -->
-                                            <button type=" submit" name="edit" class="btn btn-sm" style="background-color: #FF951B; color: white;">Ubah</button>
-                                        </div>
                                     <?php
-                                            }
                                         }
+                                    }
                                     ?>
                                 </form>
 

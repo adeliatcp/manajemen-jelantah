@@ -63,6 +63,7 @@ $route['user'] = "user/Dashboard";
 $route['user/device/edit/(:any)'] = 'user/Device/editdevice/$1';
 
 
+
 /** --------- routes pengepul -------------- */
 $route['pengepul/dashboard'] = "pengepul/Dashboard";
 $route['pengepul'] = "pengepul/Dashboard";

@@ -29,7 +29,7 @@ class Auth extends CI_Controller
     }
 
 
-    public function login_user()
+    public function login_validation()
     {
         $username = $this->input->post('username'); // Ambil isi dari inputan id pada form login
         $password = ($this->input->post('password'));
