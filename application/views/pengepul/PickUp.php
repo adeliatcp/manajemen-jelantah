@@ -118,7 +118,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-history"></i>
+                                <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
                                 </p>
@@ -126,7 +126,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-money-bill"></i>
+                                <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
                                 </p>
@@ -146,7 +146,9 @@
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Proses Penjemputan</h1>
+                            <p>
+                                <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Proses Penjemputan</h1>
+                            </p>
                         </div>
                         <div class="col-sm-10">
 
@@ -162,59 +164,56 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-
                         <div class="card-body p-0">
                             <table class="table table projects">
                                 <thead>
-                                    <tr>
+                                    <th style="width: 20%">
+                                        ID Pelanggan
+                                    </th>
+                                    <th style="width: 20%">
+                                        Alamat
+                                    </th>
 
-                                        <th style="width: 20%">
-                                            ID Pelanggan
-                                        </th>
-                                        <th style="width: 20%">
-                                            Alamat
-                                        </th>
-
-                                        <th style="width: 18%">
-                                            Telepon
-                                        </th>
-                                        <th style="width: 18%">
-                                            Harga
-                                        </th>
-                                        <th style="width: 8%" class="text-center">
-                                            Aksi
-                                        </th>
+                                    <th style="width: 18%">
+                                        Telepon
+                                    </th>
+                                    <th style="width: 18%">
+                                        Harga
+                                    </th>
+                                    <th style="width: 8%" class="text-center">
+                                        Detail
+                                    </th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <?php
+                                    if ($getprocessorder->num_rows() > 0) {
+                                        foreach ($getprocessorder->result() as $row) {
+                                    ?>
+                                            <tr>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $row->id_device; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->alamat; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->telp; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->harga; ?>
+                                                </td>
 
-                                        <td>
-                                            <a>
-                                                lumpianur
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Jl. Sumbersari No. 20
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                081234567890
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Rp 56.000,-
-                                            </a>
-                                        </td>
-
-                                        <td class="project-state">
-                                            <span class="badge badge-warning">Menunggu Verifikasi</span>
-                                        </td>
-                                    </tr>
+                                                <td class="project-state">
+                                                    <span class="badge badge-warning">Menunggu Verifikasi</span>
+                                                </td>
+                                            </tr>
+                                    <?php }
+                                    } else {
+                                    }
+                                    ?>
                                 </tbody>
                                 <tfoot>
                                 </tfoot>

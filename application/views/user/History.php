@@ -32,24 +32,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">1</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Pemberitahuan</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 pesan baru
-                            <span class="float-right text-muted text-sm">1 minute ago</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer">Lihat Semua Pemberitahuan</a>
-                    </div>
-                </li>
-                <li class="nav-item"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="active-nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
@@ -155,7 +137,9 @@
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Riwayat Transaksi</h1>
+                            <p>
+                                <h1 style=" font-size: 27px; font-family:Segoe UI; color: #673E27;">Riwayat Transaksi</h1>
+                            </p>
                         </div>
                         <div class="col-sm-10">
 
@@ -175,16 +159,15 @@
                             <table class="table table projects">
                                 <thead>
                                     <tr>
-
                                         <th style="width: 20%">
-                                            ID Pelanggan
+                                            Nama Pengepul
                                         </th>
                                         <th style="width: 20%">
-                                            ID Pengepul
+                                            ID Perangkat
                                         </th>
 
                                         <th style="width: 18%">
-                                            Dana yang didapatkan
+                                            Jumlah yang didapatkan
                                         </th>
                                         <th style="width: 8%" class="text-center">
                                             Status
@@ -196,45 +179,17 @@
                                     <tr>
 
                                         <td>
-                                            <a>
-                                                lumpianur
-                                            </a>
+                                            -
                                         </td>
                                         <td>
-                                            <a>
-                                                p_supriadi
-                                            </a>
+                                            -
                                         </td>
                                         <td>
-                                            <a>
-                                                Rp 56.000,-
-                                            </a>
+                                            -
                                         </td>
 
                                         <td class="project-state">
-                                            <span class="badge badge-success">Berhasil</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-
-                                        <td>
-                                            <a>
-                                                lumpianur
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                p_budi
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Rp 56.000,-
-                                            </a>
-                                        </td>
-
-                                        <td class="project-state">
-                                            <span class="badge badge-success">Berhasil</span>
+                                            <span class="badge badge-success">-</span>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -19,6 +19,7 @@ class VerifPickup extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_order');
 
         $user = $this->session->userdata('id_role');
 
@@ -32,7 +33,17 @@ class VerifPickup extends CI_Controller
 
     public function index()
     {
-        $this->load->view('user/VerifPickup');
+        $data["getbyStatus"] = $this->m_order->getbyStatus();
+        $this->load->view('user/verifpickup', $data);
+    }
+
+    public function order_valid()
+    {
+        $data = array(
+            'status' => 2
+        );
+        $this->db->update('ordering', $data);
+        redirect('user/dashboard');
     }
 
     // anything else just declare new function

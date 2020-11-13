@@ -32,24 +32,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">1</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Pemberitahuan</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 pesan baru
-                            <span class="float-right text-muted text-sm">1 minute ago</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer">Lihat Semua Pemberitahuan</a>
-                    </div>
-                </li>
-                <li class="nav-item"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="active-nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
@@ -174,20 +156,37 @@
                                 <div class="card-body">
                                     <table id="notifikasi" class="table table-bordered table-hover">
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <i class="nav-icon 
-                                far fa-clock"></i>
-                                                    <span class="time"> Hari ini</span>
-                                                    <p><b> Pesanan diterima,</b> pengepul sedang dalam perjalanan ke tempat anda.
-                                                        <a class="btn btn-success btn-sm" href="#" style="float:right;text-align:right;">
-                                                            <i class="fas fa-check" style="margin:right"></i>
-                                                            Sudah Dijemput
-                                                        </a></p>
-                                                    <h1 style=" font-size: 10px; font-family:Segoe UI; color: #673E27;"><i>*apabila penjemputan telah selesai jangan lupa untuk menekan tombol "Sudah Dijemput"</i></h1>
-                                                </td>
-                                            </tr>
-
+                                            <?php
+                                            if ($getbyStatus->result() == 1) {
+                                            ?>
+                                                <tr>
+                                                    <td>
+                                                        <i class="nav-icon far fa-clock"></i>
+                                                        <span class="time"> Hari ini</span>
+                                                        <p><b> Pesanan diterima,</b> pengepul sedang dalam perjalanan ke tempat anda.
+                                                            <a class="btn btn-success btn-sm" href="<?php echo base_url('user/verifpickup/order_valid'); ?>" style="float:right;text-align:right;" method="POST">
+                                                                <i class="fas fa-check" style="margin:right"></i>
+                                                                Sudah Dijemput
+                                                            </a></p>
+                                                        <h1 style=" font-size: 10px; font-family:Segoe UI; color: #673E27;"><i>*apabila penjemputan telah selesai jangan lupa untuk menekan tombol "Sudah Dijemput"</i></h1>
+                                                    </td>
+                                                </tr>
+                                            <?php } else if ($getbyStatus->result() == 3) {
+                                            ?>
+                                                <tr>
+                                                    <td>
+                                                        <i class="nav-icon far fa-clock"></i>
+                                                        <span class="time"> Hari ini</span>
+                                                        <p><b> Pesanan ditolak,</b> silahkan lakukan pemesanan kembali.
+                                                            <a class="btn btn-danger btn-sm" href="user/order" style="float:right;text-align:right;">
+                                                                <i class="" style="margin:right"></i>
+                                                                Pesan Kembali
+                                                            </a></p>
+                                                    </td>
+                                                </tr>
+                                            <?php } else {
+                                            }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                         </tfoot>

@@ -127,7 +127,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-10">
+                            <p></p>
                             <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Pengaturan Akun</h1>
+                            <p></p>
                         </div>
                         <div class="col-sm-7">
 
@@ -187,17 +189,12 @@
                                                 </div>
 
                                             </div>-->
+                                                <button type="submit" class="btn" style="background-color: #FF951B; color: white; float:right; ">
+                                                    Ubah Data
+                                                </button>
                                     </div>
-                            </div>
+                            </div> <br><br></br></br>
                             <!-- /.card-body -->
-                            <div class="card-footer">
-                                <button type="submit" class="btn" style="background-color: #FF951B; color: white;">
-                                    Ubah Data
-                                </button> <br></br>
-                                <button type="delete" class="btn btn-danger">
-                                    Hapus Akun
-                                </button>
-                            </div>
                     <?php
                                             }
                                         }
@@ -205,33 +202,28 @@
                     </form>
                         </div>
                         <br></br>
-                        <!-- /.card -->
 
-
-
-                        <!-- /.card -->
+                        <!--/.col (right) -->
                     </div>
-                    <!--/.col (right) -->
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
         </div>
-        <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block"></div>
-        <strong>Copyright &copy; 2020
-            <a>Adelia</a>.</strong>
-        All rights reserved.
-    </footer>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block"></div>
+            <strong>Copyright &copy; 2020
+                <a>Adelia</a>.</strong>
+            All rights reserved.
+        </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

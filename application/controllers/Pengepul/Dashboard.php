@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_order');
 
         $user = $this->session->userdata('id_role');
 
@@ -37,7 +38,26 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $this->load->view('pengepul/dashboard');
+        $data["getbyIduser"] = $this->m_order->getbyIduser($this->session->id);
+        $this->load->view('pengepul/dashboard', $data);
+    }
+
+    public function yes_validation()
+    {
+        $data = array(
+            'status' => 1
+        );
+        $this->db->update('ordering', $data);
+        redirect('pengepul/dashboard');
+    }
+
+    public function no_validation()
+    {
+        $data = array(
+            'status' => 3
+        );
+        $this->db->update('ordering', $data);
+        redirect('pengepul/dashboard');
     }
 
 

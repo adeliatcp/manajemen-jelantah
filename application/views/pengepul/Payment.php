@@ -119,7 +119,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-history"></i>
+                                <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
                                 </p>
@@ -127,7 +127,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-money-bill"></i>
+                                <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
                                 </p>
@@ -147,7 +147,9 @@
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;"> Riwayat Transaksi</h1>
+                            <p>
+                                <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;"> Riwayat Transaksi</h1>
+                            </p>
                         </div>
                         <div class="col-sm-10">
 
@@ -170,11 +172,11 @@
                                 <form role="form">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="InputID" style="color: #474747;">ID Perangkat Anda</label>
+                                            <label for="InputID" style="color: #474747;">ID Perangkat</label>
                                             <input type="id" class="form-control" id="ID1" name="id1" placeholder="ID Perangkat Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="InputNamarek" style="color: #474747;">ID Perangkat Pengepul</label>
+                                            <label for="InputNamarek" style="color: #474747;">Nama Pengepul</label>
                                             <input type="name" class="form-control" id="IDd2" name="id2" placeholder="ID Perangkat Pengepul">
                                             <div class="form-group">
                                                 <label for="InputTagihan" style="color: #474747;">Jumlah Tagihan</label>
@@ -193,41 +195,45 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- /.card-body -->
-                                            <div class="card-footer">
-                                                <button type="submit" formmethod="POST" class="btn" style="background-color: #FF951B; color: white;">Bayar</button>
-                                            </div>
-                                </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" formmethod="POST" class="btn" style="background-color: #FF951B; color: white;">Bayar</button>
+                                    </div>
                             </div>
+                            </form>
+
+
                             <!-- /.card -->
                         </div>
                     </div>
                     <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-        </div>
-        <!--/.col (right) -->
-    </div>
-    <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block"></div>
-        <strong>Copyright &copy; 2020
-            <a>Adelia</a>.</strong>
-        All rights reserved.
-    </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+                    <!-- /.card -->
+
+                    <!--/.col (right) -->
+
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <br></br><br></br>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block"></div>
+            <strong>Copyright &copy; 2020
+                <a>Adelia</a>.</strong>
+            All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

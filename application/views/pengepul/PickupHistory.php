@@ -119,7 +119,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-history"></i>
+                                <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
                                 </p>
@@ -127,7 +127,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-money-bill"></i>
+                                <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
                                 </p>
@@ -147,7 +147,9 @@
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Daftar Penjemputan Berhasil</h1>
+                            <p>
+                                <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Daftar Penjemputan Berhasil</h1>
+                            </p>
                         </div>
                         <div class="col-sm-10">
 
@@ -188,36 +190,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <?php
+                                    if ($getpayment->num_rows() > 0) {
+                                        foreach ($getpayment->result() as $row) {
+                                    ?>
+                                            <tr>
 
-                                        <td>
-                                            <a>
-                                                lumpianur
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Jl. Sumbersari No. 20
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                081234567890
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Rp 56.000,-
-                                            </a>
-                                        </td>
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->id_device; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->alamat; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->telp; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->harga; ?>
+                                                    </a>
+                                                </td>
 
-                                        <td class="project-state">
-                                            <a class="btn btn-danger btn-sm" href="<?= base_url('pengepul/payment'); ?>" style="font-family: calibri;">
-                                                Bayar
-                                            </a>
+                                                <td class="project-state">
+                                                    <a class="btn btn-success btn-sm" href="<?= base_url('pengepul/payment'); ?>" style="font-family: calibri;">
+                                                        Bayar
+                                                    </a>
 
-                                        </td>
-                                    </tr>
+                                                </td>
+                                            </tr>
+                                    <?php }
+                                    } else {
+                                    }
+                                    ?>
                                 </tbody>
                                 <tfoot>
                                 </tfoot>

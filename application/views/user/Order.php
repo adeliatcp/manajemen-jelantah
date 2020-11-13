@@ -32,24 +32,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">1</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Pemberitahuan</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 pesan baru
-                            <span class="float-right text-muted text-sm">1 minute ago</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer">Lihat Semua Pemberitahuan</a>
-                    </div>
-                </li>
-                <li class="nav-item"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="active-nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
@@ -154,7 +136,9 @@
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Pesan Jasa Penjemputan</h1>
+                            <p>
+                                <h1 style=" font-size: 27px; font-family:Segoe UI; color: #673E27;">Pesan Jasa Penjemputan</h1>
+                            </p>
                         </div>
                         <div class="col-sm-10">
 
@@ -174,34 +158,50 @@
                             <div class="card">
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form">
+                                <form role="form" action="<?php echo base_url('user/order/order_validation'); ?>" method="POST">
                                     <div class="card-body">
+
                                         <div class="form-group">
-                                            <label for="ID" style="color: #474747;">ID Pelanggan</label>
-                                            <p class="form-control">lumpianur</p>
+                                            <label for="PilihPengepul" style="color: #474747;">Pilih Perangkat</label>
+                                            <select class="form-control" name="pilihdevice">
+                                                <?php
+                                                if ($getIddevice->num_rows() > 0) {
+                                                    foreach ($getIddevice->result() as $row) {
+                                                ?>
+                                                        <option value="<?php echo $row->id ?>"><?php echo $row->id ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="Alamat" style="color: #474747;">Alamat</label>
-                                            <p class="form-control">Jl. Sumbersari No. 20</p>
+                                            <label for="Alamat" style="color: #474747;">Alamat Lengkap</label>
+                                            <input type="text" class="form-control" id="address" name="address">
                                         </div>
                                         <div class="form-group">
                                             <label for="Telepon" style="color: #474747;">Telepon</label>
-                                            <p class="form-control">081234567890</p>
+                                            <input type="text" class="form-control" id="telp" name="telp">
                                         </div>
+
                                         <div class="form-group">
                                             <label for="PilihPengepul" style="color: #474747;">Pilih Pengepul</label>
-                                            <select class="form-control" id="jurusan">
-                                                <option>Supriadi</option>
-                                                <option>Bambang</option>
-                                                <option>Udin</option>
-                                                <option>Herman</option>
-                                                <option>Budi</option>
+                                            <select class="form-control" id="name" name="pilihpengepul">
+                                                <?php
+                                                if ($getbyIdrole->num_rows() > 0) {
+                                                    foreach ($getbyIdrole->result() as $row) {
+                                                ?>
+                                                        <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="Harga" style="color: #474747;">Harga</label>
-                                            <p class="form-control">Rp 56.000,-</p>
+                                            <input type="text" class="form-control" id="price" name="price">
                                         </div>
                                         <h1 style=" font-size: 10px; font-family:Segoe UI; color: #673E27;"><i>*apabila penjemputan telah selesai jangan lupa untuk menekan tombol "Sudah Dijemput" pada pemberitahuan</i></h1>
                                     </div>
@@ -221,7 +221,7 @@
         <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-
+        <br></br>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.5</div>

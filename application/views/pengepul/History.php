@@ -119,7 +119,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-history"></i>
+                                <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
                                 </p>
@@ -127,7 +127,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-money-bill"></i>
+                                <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
                                 </p>
@@ -147,7 +147,9 @@
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Riwayat Transaksi</h1>
+                            <p>
+                                <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Riwayat Transaksi</h1>
+                            </p>
                         </div>
                         <div class="col-sm-10">
 

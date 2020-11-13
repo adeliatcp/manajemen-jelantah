@@ -44,24 +44,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">1</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Pemberitahuan</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 pesan baru
-                            <span class="float-right text-muted text-sm">1 minute ago</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer">Lihat Semua Pemberitahuan</a>
-                    </div>
-                </li>
-                <li class="nav-item"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="active-nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
@@ -168,7 +150,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-10">
                             <p></p>
-                            <h1 style=" font-size: 30px; font-family:Segoe UI; color: #673E27;">Ubah Informasi Perangkat</h1>
+                            <h1 style=" font-size: 28px; font-family:Segoe UI; color: #673E27;">Ubah Informasi Perangkat</h1>
                             <p></p>
                         </div>
                         <div class="col-sm-7">

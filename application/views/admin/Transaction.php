@@ -193,17 +193,17 @@
 
                                         <td>
                                             <a>
-                                                lumpianur
+                                                -
                                             </a>
                                         </td>
                                         <td>
                                             <a>
-                                                p_budi
+                                                -
                                             </a>
                                         </td>
                                         <td>
                                             <a>
-                                                Rp 56.000,-
+                                                -
                                             </a>
                                         </td>
 

@@ -33,24 +33,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">1</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Pemberitahuan</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 pesan baru
-                            <span class="float-right text-muted text-sm">1 minute ago</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer">Lihat Semua Pemberitahuan</a>
-                    </div>
-                </li>
-                <li class="nav-item"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="active-nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
@@ -156,7 +138,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Pengaturan Akun</h1>
+                            <p></p>
+                            <h1 style=" font-size: 27px; font-family:Segoe UI; color: #673E27;">Pengaturan Akun</h1>
+                            <p></p>
                         </div>
                         <div class="col-sm-7">
 
@@ -214,21 +198,13 @@
                                                     <input type="file" class="custom-file-input" id="InputFoto" />
                                                     <label class="custom-file-label" for="InputFile">Pilih Foto</label>
                                                 </div>
-
                                             </div>-->
+                                                <button type="submit" class="btn" style="background-color: #FF951B; color: white; float:right; ">
+                                                    Ubah Data
+                                                </button>
                                     </div>
-
-                            </div>
+                            </div> <br><br></br></br>
                             <!-- /.card-body -->
-
-                            <div class="card-footer">
-                                <button type="submit" class="btn" style="background-color: #FF951B; color: white;">
-                                    Ubah Data
-                                </button> <br></br>
-                                <button type="delete" class="btn btn-danger">
-                                    Hapus Akun
-                                </button>
-                            </div>
                     <?php
                                             }
                                         }
@@ -236,33 +212,28 @@
                     </form>
                         </div>
                         <br></br>
-                        <!-- /.card -->
 
-
-
-                        <!-- /.card -->
+                        <!--/.col (right) -->
                     </div>
-                    <!--/.col (right) -->
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
         </div>
-        <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block"></div>
-        <strong>Copyright &copy; 2020
-            <a>Adelia</a>.</strong>
-        All rights reserved.
-    </footer>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block"></div>
+            <strong>Copyright &copy; 2020
+                <a>Adelia</a>.</strong>
+            All rights reserved.
+        </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

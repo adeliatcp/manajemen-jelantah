@@ -44,24 +44,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">1</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Pemberitahuan</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 pesan baru
-                            <span class="float-right text-muted text-sm">1 minute ago</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer">Lihat Semua Pemberitahuan</a>
-                    </div>
-                </li>
-                <li class="nav-item"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="active-nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
@@ -166,7 +148,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 30px; font-family:Segoe UI; color: #673E27;">Grafik Perangkat Tampung Minyak Jelantah</h1>
+                            <p></p>
+                            <h1 style=" font-size: 27px; font-family:Segoe UI; color: #673E27;">Grafik Perangkat Tampung Minyak Jelantah</h1>
+                            <p></p>
                         </div>
                         <div class="col-sm-7">
 
@@ -178,7 +162,7 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
+                <div class="container-fluid" style="margin:auto;">
                     <div class="card card-warning card-outline">
                         <div class="card-header">
                             <h3 class="card-title">
@@ -202,25 +186,26 @@
                     <!-- /.card -->
 
                     <!-- /.col -->
-                </div>
-                <!-- /.row -->
-        </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.5</div>
-        <strong>Copyright &copy; 2020
-            <a>Adelia</a>.</strong>
-        All rights reserved.
-    </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <br></br>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.5</div>
+            <strong>Copyright &copy; 2020
+                <a>Adelia</a>.</strong>
+            All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

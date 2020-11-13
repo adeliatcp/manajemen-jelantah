@@ -39,26 +39,35 @@
                 <li class="nav-item">
                     <a class="nav-link" style="color: #C05419;" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-
             </ul>
-
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">1</span>
+                        <?php
+                        if ($getbyStatus->result() == 1) {
+                        ?>
+                            <span class="badge badge-warning navbar-badge">1</span>
+                            <?php ?>
+                        <?php } else if ($getbyStatus->result() == 3) {
+                        ?>
+                            <span class="badge badge-danger navbar-badge">1</span>
+                        <?php
+                        } else {
+                        }
+                        ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">Pemberitahuan</span>
+                        <span class="dropdown-header"></span>
                         <div class="dropdown-divider"></div>
                         <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 pesan baru
-                            <span class="float-right text-muted text-sm">1 minute ago</span>
+                            <i class="fas fa-envelope mr-2"></i> Pemberitahuan Baru
+                            <span class="float-right text-muted text-sm"></span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer">Lihat Semua Pemberitahuan</a>
+                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item dropdown-footer"></a>
                     </div>
                 </li>
                 <li class="nav-item"></li>
@@ -198,8 +207,8 @@
                     <div class="col-md-9" style="margin:auto;">
                         <div class="card">
                             <div class="card-header" style="background-color:#D57E1B ;">
-                                <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE; text-align:center; "><b>Daftar Perangkat Anda</b></h2>
-                                <a class="btn btn-sm" href="device/adddevice" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>tambah perangkat</b></a>
+                                <h2 class="card-title" style="font-size: 17px; font-family:Trebuchet MS; color: #F8F2EE; text-align:center; "><b>Daftar Perangkat Anda</b></h2>
+                                <a class="btn btn-sm" href="<?= base_url('user/device/adddevice'); ?>" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>tambah perangkat</b></a>
                             </div>
                             <div class=" card-body p-1">
                                 <table class="table table projects" style="size:center;">
@@ -229,7 +238,7 @@
                                                         <?php echo $row->alamat; ?>
                                                     </td>
                                                     <td class="project-state">
-                                                        <a class="btn btn-success btn-sm" href="device">
+                                                        <a class="btn btn-success btn-sm" href="<?= base_url('user/device'); ?>">
                                                             <i class="fas fa-eye">
                                                             </i>
                                                         </a>

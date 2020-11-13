@@ -130,7 +130,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-history"></i>
+                                <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
                                 </p>
@@ -138,7 +138,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fas fa-money-bill"></i>
+                                <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
                                 </p>
@@ -196,7 +196,7 @@
                                         <tr>
 
                                             <th style="width: 18%">
-                                                ID Pelanggan
+                                                ID Perangkat
                                             </th>
                                             <th style="width: 20%">
                                                 Alamat
@@ -215,41 +215,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <?php
+                                        if ($getbyIduser->num_rows() > 0) {
+                                            foreach ($getbyIduser->result() as $row) {
+                                        ?>
+                                                <tr>
 
-                                            <td>
-                                                <a>
-                                                    lumpianur
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a>
-                                                    Jl. Sumbersari No. 20
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a>
-                                                    081234567890
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a>
-                                                    Rp 56.000,-
-                                                </a>
-                                            </td>
+                                                    <td>
+                                                        <?php echo $row->id_device; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row->alamat; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row->telp; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row->harga; ?>
+                                                    </td>
 
-                                            <td class="project-state">
-                                                <a class="btn btn-success btn-sm" href="#">
-                                                    <i class="fas fa-check">
-                                                    </i>
-                                                </a>
-                                                <a class="btn btn-danger btn-sm" href="#">
-                                                    <i class="fas fa-times">
-                                                    </i>
-
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                    <td class="project-state">
+                                                        <a class="btn btn-success btn-sm" href="<?= base_url('pengepul/dashboard/yes_validation'); ?>">
+                                                            <i class="fas fa-check">
+                                                            </i>
+                                                        </a>
+                                                        <?php echo anchor('pengepul/dashboard/no_validation/' . $row->id, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash">
+                                                            </i>
+                                                        </div>') ?>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                        } else {
+                                            ?>
+                                            <tr>
+                                                <td>-</td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                     <tfoot>
                                     </tfoot>

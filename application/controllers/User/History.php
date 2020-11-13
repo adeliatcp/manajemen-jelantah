@@ -22,6 +22,7 @@ class History extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_order');
 
         $user = $this->session->userdata('id_role');
 
@@ -35,8 +36,8 @@ class History extends CI_Controller
 
     public function index()
     {
-
-        $this->load->view('user/History');
+        $data["getbyIduser"] = $this->m_order->getbyIduser($this->session->id);
+        $this->load->view('user/History', $data);
     }
 
     // anything else just declare new function
