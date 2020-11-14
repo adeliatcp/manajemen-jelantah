@@ -217,58 +217,41 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         <?php
-                                        if ($getnamebyId->num_rows() > 0) {
-                                            foreach ($getnamebyId->result() as $row) {
+                                        if ($getbyIduser->num_rows() > 0) {
+                                            foreach ($getbyIduser->result() as $row) {
                                         ?>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo $row->name; ?>
-                                                    </td>
-                                            <?php }
-                                        } else {
-                                        }
-                                            ?>
-                                            <?php
-                                            if ($getbyIduser->num_rows() > 0) {
-                                                foreach ($getbyIduser->result() as $row) {
-                                            ?>
-                                                    <td>
-                                                        <?php echo $row->id_device; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row->alamat; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row->telp; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row->harga; ?>
-                                                    </td>
+                                            <td>
+                                                <?php echo $row->name; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->id_device; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->alamat; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->telp; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->harga; ?>
+                                            </td>
 
-                                                    <td class="project-state">
-                                                        <a class="btn btn-success btn-sm" href="<?= base_url('pengepul/dashboard/yes_validation'); ?>">
-                                                            <i class="fas fa-check">
-                                                            </i>
-                                                        </a>
-                                                        <a class="btn btn-danger btn-sm" href="<?= base_url('pengepul/dashboard/no_validation'); ?>">
-                                                            <i class="fas fa-times">
-                                                            </i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            <?php }
-                                            } else {
-                                            ?>
-                                            <tr>
-                                                <td>Tidak ada data</td>
-                                            </tr>
-                                        <?php
+                                            <td class="project-state">
+                                                <a class="btn btn-success btn-sm" href="<?= base_url('pengepul/order/' . $row->id . '?confirm=true'); ?>">
+                                                    <i class="fas fa-check">
+                                                    </i>
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" href="<?= base_url('pengepul/order/' . $row->id . '?confirm=false'); ?>">
+                                                    <i class="fas fa-times">
+                                                    </i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php 
                                             }
+                                        } 
                                         ?>
-
-
                                     </tbody>
                                     <tfoot>
                                     </tfoot>
@@ -305,7 +288,7 @@
     <script src="<?= base_url() ?>template/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

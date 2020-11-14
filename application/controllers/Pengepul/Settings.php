@@ -58,7 +58,6 @@ class Settings extends CI_Controller
             'email' => $email,
             'telp' => $telp,
             'address' => $address
-
         );
         $where = array(
             'id' => $id_user

@@ -44,7 +44,7 @@ class Order extends CI_Controller
         $this->load->view('user/Order', $data);
     }
 
-    public function order_validation()
+    public function create_order()
     {
         $data = array(
             'id_user' => $this->session->id,
@@ -59,10 +59,14 @@ class Order extends CI_Controller
         redirect('user/dashboard');
     }
 
-
-
-
-
+    public function order_validation()
+    {
+        $data = array(
+            'status' => 2
+        );
+        $this->db->update('ordering', $data);
+        redirect('user/dashboard');
+    }
 
     // anything else just declare new function
 

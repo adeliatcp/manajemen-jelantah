@@ -38,30 +38,23 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $data["getnamebyId"] = $this->m_order->getnamebyId();
         $data["getbyIduser"] = $this->m_order->getbyIduser($this->session->id);
         $this->load->view('pengepul/dashboard', $data);
     }
 
-    public function yes_validation()
+    /**
+     * bisa pakai ? (query url)
+     * url = google.com/order/1?confirm=true
+     */
+
+    public function order_validation($id_order) 
     {
-        $data = array(
-            'status' => 1
-        );
-        $this->db->update('ordering', $data);
+        $bool_order = $this->input->get('confirm', TRUE);
+        // true || false
+        $status_code = filter_var($bool_order, FILTER_VALIDATE_BOOLEAN) ? 1 : 3;
+        $this->m_order->update_order($id_order, $status_code);
         redirect('pengepul/dashboard');
     }
-
-    public function no_validation()
-    {
-        $data = array(
-            'status' => 3
-        );
-        $this->db->update('ordering', $data);
-        redirect('pengepul/dashboard');
-    }
-
 
     // anything else just declare new function
-
 }

@@ -21,30 +21,35 @@ class m_order extends CI_Model
         return $this->db->get();
     }
 
-    public function getnamebyId()
-    {
-        $this->db->select('*');
-        $this->db->from('user');
-        $this->db->join('ordering', 'ordering.id_user = user.id ');
-        return $this->db->get();
-    }
-
     public function getbyIduser($id_user)
     {
         $condition = array(
             'id_pengepul' => $id_user,
             'status' => 0
         );
+        $this->db->select('ordering.*, user.name, user.email, user.telp, user.address');
         $this->db->from('ordering');
         $this->db->where($condition);
-        // https://codeigniter.com/userguide3/database/results.html
+        $this->db->join('user', 'user.id = ordering.id_user');
         return $this->db->get();
     }
 
-    public function no_valid($data, $table)
+    public function no_valid($condition, $data)
     {
-        $this->db->where($data);
-        $this->db->delete($table);
+        $this->db->where($condition);
+        $this->db->delete($data);
+    }
+
+    public function update_order($id_order, $status_code) 
+    {
+        $condition = array(
+            'id' => $id_order
+        );
+        $data = array(
+            'status' => $status_code
+        );
+        $this->db->where($condition);
+        $this->db->update('ordering', $data);
     }
 
     public function getbyStatus()
@@ -55,9 +60,6 @@ class m_order extends CI_Model
         $query = $this->db->get();
         $set = $query->row();
         return $set->status;
-
-        // https://codeigniter.com/userguide3/database/results.htm        
-
     }
 
     public function getprocessorder($id_user)

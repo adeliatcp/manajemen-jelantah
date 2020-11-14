@@ -29,15 +29,7 @@ class VerifPickup extends CI_Controller
         $this->load->view('user/verifpickup', $data);
     }
 
-    public function order_valid()
-    {
-        $data = array(
-            'status' => 2
-        );
-        $this->db->update('ordering', $data);
-        redirect('user/dashboard');
-    }
-
+    
     // anything else just declare new function
 
 }

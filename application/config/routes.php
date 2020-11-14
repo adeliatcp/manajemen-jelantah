@@ -68,6 +68,8 @@ $route['user/device/edit/(:any)'] = 'user/Device/editdevice/$1';
 $route['pengepul/dashboard'] = "pengepul/Dashboard";
 $route['pengepul'] = "pengepul/Dashboard";
 
+$route['pengepul/order/(:num)'] = 'pengepul/Dashboard/order_validation/$1';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
