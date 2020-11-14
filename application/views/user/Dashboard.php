@@ -253,7 +253,7 @@
                                         } else {
                                             ?>
                                             <tr>
-                                                <td>kosong</td>
+                                                <td>tidak ada data</td>
                                             </tr>
                                         <?php
                                         }
