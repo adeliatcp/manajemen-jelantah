@@ -22,6 +22,7 @@ class Settings extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_auth');
         $this->load->model('m_settings');
 
         $user = $this->session->userdata('id_role');
@@ -36,7 +37,7 @@ class Settings extends CI_Controller
 
     public function index()
     {
-        $data["getdatabyId"] = $this->m_settings->getdatabyId($this->session->id);
+        $data["getdatabyId"] = $this->m_auth->getdatabyId($this->session->id);
         $this->load->view('admin/settings', $data);
     }
 
@@ -61,7 +62,6 @@ class Settings extends CI_Controller
         $where = array(
             'id' => $id_user
         );
-
         $this->m_settings->update($where, $data, 'user');
         redirect('admin/settings');
     }

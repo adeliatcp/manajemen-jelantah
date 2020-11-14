@@ -38,6 +38,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+        $data["getnamebyId"] = $this->m_order->getnamebyId();
         $data["getbyIduser"] = $this->m_order->getbyIduser($this->session->id);
         $this->load->view('pengepul/dashboard', $data);
     }

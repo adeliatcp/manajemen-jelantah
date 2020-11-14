@@ -13,8 +13,21 @@ class m_auth extends CI_Model
 
     function auth($username)
     {
-        $query = $this->db->where('username', $username);
+        $this->db->where('username', $username);
         $result = $this->db->get('user')->row(); // Untuk mengeksekusi dan mengambil data hasil query
         return $result;
+    }
+
+    public function getdatabyId($id_user)
+    {
+
+        $condition = array(
+            'id' => $id_user
+        );
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where($condition);
+        // https://codeigniter.com/userguide3/database/results.html
+        return $this->db->get();
     }
 }

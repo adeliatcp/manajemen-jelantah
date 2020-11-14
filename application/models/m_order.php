@@ -21,25 +21,11 @@ class m_order extends CI_Model
         return $this->db->get();
     }
 
-    public function getIddevice($id_user)
+    public function getnamebyId()
     {
-        $condition = array(
-            'id_user' => $id_user
-        );
-        $this->db->select('id');
-        $this->db->from('device');
-        $this->db->where($condition);
-        return $this->db->get();
-    }
-
-    public function getIdpengepul($id_user)
-    {
-        $condition = array(
-            'id' => $id_user,
-        );
         $this->db->select('*');
         $this->db->from('user');
-        $this->db->where($condition);
+        $this->db->join('ordering', 'ordering.id_user = user.id ');
         return $this->db->get();
     }
 
@@ -64,10 +50,14 @@ class m_order extends CI_Model
     public function getbyStatus()
     {
         $this->db->select('*');
-        $this->db->from('ordering');
         $this->db->where('status !=', 0);
-        // https://codeigniter.com/userguide3/database/results.html
-        return $this->db->get();
+        $this->db->from('ordering');
+        $query = $this->db->get();
+        $set = $query->row();
+        return $set->status;
+
+        // https://codeigniter.com/userguide3/database/results.htm        
+
     }
 
     public function getprocessorder($id_user)

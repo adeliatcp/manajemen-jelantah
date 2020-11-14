@@ -47,11 +47,10 @@
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
                         <?php
-                        if ($getbyStatus->result() == 1) {
+                        if (isset($getbyStatus) & $getbyStatus == 1) {
                         ?>
                             <span class="badge badge-warning navbar-badge">1</span>
-                            <?php ?>
-                        <?php } else if ($getbyStatus->result() == 3) {
+                        <?php } else if (isset($getbyStatus) & $getbyStatus == 3) {
                         ?>
                             <span class="badge badge-danger navbar-badge">1</span>
                         <?php
@@ -60,7 +59,7 @@
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header"></span>
+                        <span class="dropdown-header">Pemberitahuan</span>
                         <div class="dropdown-divider"></div>
                         <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
                             <i class="fas fa-envelope mr-2"></i> Pemberitahuan Baru

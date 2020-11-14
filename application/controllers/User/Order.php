@@ -23,6 +23,8 @@ class Order extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->model('m_order');
+        $this->load->model('m_device');
+        $this->load->model('m_auth');
 
         $user = $this->session->userdata('id_role');
 
@@ -36,14 +38,16 @@ class Order extends CI_Controller
 
     public function index()
     {
-        $data["getIddevice"] = $this->m_order->getIddevice($this->session->id);
+        $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $data["getbyIdrole"] = $this->m_order->getbyIdrole();
+        $data["getdatabyId"] = $this->m_auth->getdatabyId($this->session->id);
         $this->load->view('user/Order', $data);
     }
 
     public function order_validation()
     {
         $data = array(
+            'id_user' => $this->session->id,
             'id_device' => $this->input->post('pilihdevice'),
             'alamat'   =>  $this->input->post('address'),
             'telp'      =>  $this->input->post('telp'),
@@ -54,6 +58,8 @@ class Order extends CI_Controller
         $this->db->insert('ordering', $data);
         redirect('user/dashboard');
     }
+
+
 
 
 
