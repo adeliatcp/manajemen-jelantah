@@ -253,7 +253,7 @@
                                         } else {
                                             ?>
                                             <tr>
-                                                <td>Tidak ada data</td>
+                                                <td>-</td>
                                             </tr>
                                         <?php
                                         }
