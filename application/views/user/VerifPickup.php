@@ -157,7 +157,7 @@
                                     <table id="notifikasi" class="table table-bordered table-hover">
                                         <tbody>
                                             <?php
-                                            if ($getbyStatus->result() == 1) {
+                                            if (isset($getbyStatus) & $getbyStatus == 1) {
                                             ?>
                                                 <tr>
                                                     <td>
@@ -171,7 +171,7 @@
                                                         <h1 style=" font-size: 10px; font-family:Segoe UI; color: #673E27;"><i>*apabila penjemputan telah selesai jangan lupa untuk menekan tombol "Sudah Dijemput"</i></h1>
                                                     </td>
                                                 </tr>
-                                            <?php } else if ($getbyStatus->result() == 3) {
+                                            <?php } else if (isset($getbyStatus) & $getbyStatus == 3) {
                                             ?>
                                                 <tr>
                                                     <td>

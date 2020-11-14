@@ -165,8 +165,8 @@
                                             <label for="PilihPengepul" style="color: #474747;">Pilih Perangkat</label>
                                             <select class="form-control" name="pilihdevice">
                                                 <?php
-                                                if ($getIddevice->num_rows() > 0) {
-                                                    foreach ($getIddevice->result() as $row) {
+                                                if ($getbyId->num_rows() > 0) {
+                                                    foreach ($getbyId->result() as $row) {
                                                 ?>
                                                         <option value="<?php echo $row->id ?>"><?php echo $row->id ?></option>
                                                 <?php
@@ -179,10 +179,18 @@
                                             <label for="Alamat" style="color: #474747;">Alamat Lengkap</label>
                                             <input type="text" class="form-control" id="address" name="address">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="Telepon" style="color: #474747;">Telepon</label>
-                                            <input type="text" class="form-control" id="telp" name="telp">
-                                        </div>
+                                        <?php
+                                        if ($getdatabyId->num_rows() > 0) {
+                                            foreach ($getdatabyId->result() as $row) {
+                                        ?>
+                                                <div class="form-group">
+                                                    <label for="Telepon" style="color: #474747;">Telepon</label>
+                                                    <input type="text" class="form-control" id="telp" name="telp" value="<?php echo $row->telp ?>">
+                                                </div>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
 
                                         <div class="form-group">
                                             <label for="PilihPengepul" style="color: #474747;">Pilih Pengepul</label>

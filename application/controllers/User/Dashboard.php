@@ -22,8 +22,9 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model('m_device');
         $this->load->model('m_order');
+        $this->load->model('m_device');
+
 
         $user = $this->session->userdata('id_role');
 
@@ -41,9 +42,8 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-
-        $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $data["getbyStatus"] = $this->m_order->getbyStatus();
+        $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $this->load->view('user/dashboard', $data);
     }
 

@@ -194,7 +194,9 @@
                                 <table class="table table projects">
                                     <thead>
                                         <tr>
-
+                                            <th style="width: 18%">
+                                                Nama Pemesan
+                                            </th>
                                             <th style="width: 18%">
                                                 ID Perangkat
                                             </th>
@@ -215,12 +217,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         <?php
-                                        if ($getbyIduser->num_rows() > 0) {
-                                            foreach ($getbyIduser->result() as $row) {
+                                        if ($getnamebyId->num_rows() > 0) {
+                                            foreach ($getnamebyId->result() as $row) {
                                         ?>
                                                 <tr>
-
+                                                    <td>
+                                                        <?php echo $row->name; ?>
+                                                    </td>
+                                            <?php }
+                                        } else {
+                                        }
+                                            ?>
+                                            <?php
+                                            if ($getbyIduser->num_rows() > 0) {
+                                                foreach ($getbyIduser->result() as $row) {
+                                            ?>
                                                     <td>
                                                         <?php echo $row->id_device; ?>
                                                     </td>
@@ -239,20 +252,23 @@
                                                             <i class="fas fa-check">
                                                             </i>
                                                         </a>
-                                                        <?php echo anchor('pengepul/dashboard/no_validation/' . $row->id, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash">
+                                                        <a class="btn btn-danger btn-sm" href="<?= base_url('pengepul/dashboard/no_validation'); ?>">
+                                                            <i class="fas fa-times">
                                                             </i>
-                                                        </div>') ?>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             <?php }
-                                        } else {
+                                            } else {
                                             ?>
                                             <tr>
-                                                <td>-</td>
+                                                <td>Tidak ada data</td>
                                             </tr>
                                         <?php
-                                        }
+                                            }
                                         ?>
+
+
                                     </tbody>
                                     <tfoot>
                                     </tfoot>
