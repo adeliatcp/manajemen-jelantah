@@ -253,7 +253,7 @@
                                         } else {
                                             ?>
                                             <tr>
-                                                <td>-</td>
+                                                <td>kosong</td>
                                             </tr>
                                         <?php
                                         }
