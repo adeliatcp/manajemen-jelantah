@@ -31,9 +31,9 @@ class Device extends CI_Controller
         }
     }
 
-    public function index()
+    public function index($id_device)
     {
-        $this->load->view('user/device');
+        $this->load->view('user/device', ['id_device' => $id_device]);
     }
 
     public function adddevice()

@@ -63,6 +63,8 @@ $route['user/dashboard'] = "user/Dashboard";
 $route['user'] = "user/Dashboard";
 $route['user/device/edit/(:any)'] = 'user/Device/editdevice/$1';
 
+$route['user/device/(:any)'] = 'user/Device/index/$1';
+
 
 
 /** --------- routes pengepul -------------- */

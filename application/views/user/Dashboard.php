@@ -236,7 +236,7 @@
                                                         <?php echo $row->alamat; ?>
                                                     </td>
                                                     <td class="project-state">
-                                                        <a class="btn btn-success btn-sm" href="<?= base_url('user/device'); ?>">
+                                                        <a class="btn btn-success btn-sm" href="<?= base_url('user/device/' . $row->id); ?>">
                                                             <i class="fas fa-eye">
                                                             </i>
                                                         </a>
