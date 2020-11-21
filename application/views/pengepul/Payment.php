@@ -92,7 +92,14 @@
                         <img src="<?= base_url() ?>template/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Budi</b></a>
+                        <?php
+                        if ($getdatabyId->num_rows() > 0) {
+                            foreach ($getdatabyId->result() as $row) {
+                        ?>
+                                <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><?php echo $row->name ?></a>
+                        <?php
+                            }
+                        } ?>
                     </div>
                 </div>
 
@@ -118,7 +125,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/pickup/pickup_success'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
@@ -126,7 +133,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/payment/payment_history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
@@ -148,7 +155,7 @@
                     <div class="row mb-3">
                         <div class="col-sm-10">
                             <p>
-                                <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;"> Riwayat Transaksi</h1>
+                                <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Pembayaran</h1>
                             </p>
                         </div>
                         <div class="col-sm-10">
@@ -169,58 +176,61 @@
                             <div class="card">
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form">
+                                <form role="form" action="<?php echo base_url() . 'pengepul/payment/payment_validation'; ?>" method="post">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="InputID" style="color: #474747;">ID Perangkat</label>
-                                            <input type="id" class="form-control" id="ID1" name="id1" placeholder="ID Perangkat Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputNamarek" style="color: #474747;">Nama Pengepul</label>
-                                            <input type="name" class="form-control" id="IDd2" name="id2" placeholder="ID Perangkat Pengepul">
-                                            <div class="form-group">
-                                                <label for="InputTagihan" style="color: #474747;">Jumlah Tagihan</label>
-                                                <input type="bill" class="form-control" id="Bill" name="bill" placeholder="Telepon">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="InputTagihan" style="color: #474747;">Tanggal Pembayaran</label>
-                                                <input type="date" class="form-control" id="Date" name="date" placeholder="Telepon">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="InputBukti" style="color: #474747;">Upload Bukti Pembayaran</label>
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="Bukti" name="bukti">
-                                                        <label class="custom-file-label" for="InputBukti">Pilih Foto</label>
-                                                    </div>
+                                        <?php
+                                        if ($getdatabyId->num_rows() > 0) {
+                                            foreach ($getdatabyId->result() as $row) {
+                                        ?>
+                                                <div class="form-group">
+                                                    <label for="inputname" style="color: #474747;">Nama Pengepul</label>
+                                                    <input type="text" class="form-control" id="name1" name="name1" value="<?php echo $row->name ?>">
                                                 </div>
-                                            </div>
-                                        </div>
+                                        <?php
+                                            }
+                                        } ?>
+                                        <?php
+                                        if ($getdatapayment->num_rows() > 0) {
+                                            foreach ($getdatapayment->result() as $row) {
+                                        ?>
+                                                <div class="form-group">
+                                                    <label for="inputname" style="color: #474747;">ID Pesanan</label>
+                                                    <input type="text" class="form-control" id="idorder" name="idorder" value="<?php echo $row->id ?>" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputname" style="color: #474747;">Nama Pemesan</label>
+                                                    <input type="hidden" class="form-control" id="iduser" name="iduser" value="<?php echo $row->id_user ?>">
+                                                    <input type="text" class="form-control" value="<?php echo $row->name ?>" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputid" style="color: #474747;">ID Perangkat Pemesan</label>
+                                                    <input type="id" class="form-control" id="iddevice" name="iddevice" value="<?php echo $row->id_device ?>" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputbill" style="color: #474747;">Jumlah Tagihan</label>
+                                                    <input type="text" class="form-control" id="bill" name="bill" value="<?php echo $row->harga ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputbill" style="color: #474747;">Tanggal Penjemputan</label>
+                                                    <input type="text" class="form-control" id="date" name="date" value="<?php echo $row->date ?>" readonly>
+                                                </div>
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="submit" formmethod="POST" class="btn" style="background-color: #FF951B; color: white;">Bayar</button>
+                                        <button type="submit" formmethod="POST" class="btn" style="background-color: #FF951B; color: white;" value="delete">Bayar</button>
                                     </div>
+                            <?php
+                                            }
+                                        }
+                            ?>
+                                </form> <!-- /.card -->
                             </div>
-                            </form>
-
-
-                            <!-- /.card -->
                         </div>
+                        <br></br><br></br>
+                        <!-- /.row -->
                     </div>
-                    <!-- /.card-body -->
-
-                    <!-- /.card -->
-
-                    <!--/.col (right) -->
-
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
             </section>
-            <!-- /.content -->
         </div>
-        <br></br><br></br>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block"></div>
@@ -240,6 +250,10 @@
     <!-- jQuery -->
     <script src="<?= base_url() ?>template/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
     <script src="<?= base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- bs-custom-file-input -->
     <script src="<?= base_url() ?>template/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>

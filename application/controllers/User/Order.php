@@ -25,6 +25,7 @@ class Order extends CI_Controller
         $this->load->model('m_order');
         $this->load->model('m_device');
         $this->load->model('m_auth');
+        $this->load->model('m_payment');
 
         $user = $this->session->userdata('id_role');
 
@@ -59,13 +60,25 @@ class Order extends CI_Controller
         redirect('user/dashboard');
     }
 
-    public function order_validation()
+    public function order_valid()
     {
         $data = array(
             'status' => 2
         );
         $this->db->update('ordering', $data);
         redirect('user/dashboard');
+    }
+
+    public function verif_pickup()
+    {
+        $data["getbyStatus"] = $this->m_order->getbyStatus($this->session->id);
+        $this->load->view('user/Notification', $data);
+    }
+
+    public function history()
+    {
+        $data["history"] = $this->m_payment->userhistory($this->session->id);
+        $this->load->view('user/History', $data);
     }
 
     // anything else just declare new function

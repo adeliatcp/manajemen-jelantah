@@ -42,7 +42,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $data["getbyStatus"] = $this->m_order->getbyStatus();
+        $data["getbyStatus"] = $this->m_order->getbyStatus($this->session->id);
         $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $this->load->view('user/dashboard', $data);
     }

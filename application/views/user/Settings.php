@@ -118,7 +118,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('user/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('user/order/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon 
                                 fas fa-hourglass-half"></i>
                                 <p> Transaksi </p>

@@ -32,6 +32,7 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="active-nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
@@ -39,9 +40,8 @@
                         <span class="badge badge-danger navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-
                         <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/settings'); ?>" class=" dropdown-item">
+                        <a href="<?= base_url('pengepul/settings'); ?>" class=" dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
                                 <div class="media-body">
@@ -89,10 +89,10 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/lumpia.jpg" class="img-circle elevation-2" alt="User Image" />
+                        <img src="<?= base_url() ?>template/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Lumpia Nur</b></a>
+                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Budi</b></a>
                     </div>
                 </div>
 
@@ -101,9 +101,8 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
                         <li class="nav-item">
-                            <a href="<?= base_url('user/dashboard'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/dashboard'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Beranda
@@ -111,22 +110,34 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('user/order'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/pickup'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fa fa-truck"></i>
-                                <p> Pesan Jasa Pengepul </p>
+                                <p>
+                                    Proses Penjemputan
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('user/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon 
-                                fas fa-hourglass-half"></i>
-                                <p> Transaksi </p>
+                            <a href="<?= base_url('pengepul/pickup/pickup_success'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                                <i class="nav-icon fas fa-money-bill"></i>
+                                <p>
+                                    Pembayaran
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('pengepul/payment/payment_history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                                <i class="nav-icon fas fa-history"></i>
+                                <p>
+                                    Riwayat Transaksi
+                                </p>
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
+            <!-- /.sidebar -->
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
@@ -136,7 +147,9 @@
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Pemberitahuan</h1>
+                            <p>
+                                <h1 style=" font-size: 26px; font-family:Segoe UI; color: #673E27;">Daftar Penjemputan Berhasil</h1>
+                            </p>
                         </div>
                         <div class="col-sm-10">
 
@@ -148,54 +161,79 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="notifikasi" class="table table-bordered table-hover">
-                                        <tbody>
-                                            <?php
-                                            if (isset($getbyStatus) & $getbyStatus == 1) {
-                                            ?>
-                                                <tr>
-                                                    <td>
-                                                        <i class="nav-icon far fa-clock"></i>
-                                                        <span class="time"> Hari ini</span>
-                                                        <p><b> Pesanan diterima,</b> pengepul sedang dalam perjalanan ke tempat anda.
-                                                            <a class="btn btn-success btn-sm" href="<?php echo base_url('user/verifpickup/order_valid'); ?>" style="float:right;text-align:right;" method="POST">
-                                                                <i class="fas fa-check" style="margin:right"></i>
-                                                                Sudah Dijemput
-                                                            </a></p>
-                                                        <h1 style=" font-size: 10px; font-family:Segoe UI; color: #673E27;"><i>*apabila penjemputan telah selesai jangan lupa untuk menekan tombol "Sudah Dijemput"</i></h1>
-                                                    </td>
-                                                </tr>
-                                            <?php } else if (isset($getbyStatus) & $getbyStatus == 3) {
-                                            ?>
-                                                <tr>
-                                                    <td>
-                                                        <i class="nav-icon far fa-clock"></i>
-                                                        <span class="time"> Hari ini</span>
-                                                        <p><b> Pesanan ditolak,</b> silahkan lakukan pemesanan kembali.
-                                                            <a class="btn btn-danger btn-sm" href="user/order" style="float:right;text-align:right;">
-                                                                <i class="" style="margin:right"></i>
-                                                                Pesan Kembali
-                                                            </a></p>
-                                                    </td>
-                                                </tr>
-                                            <?php } else {
-                                            }
-                                            ?>
-                                        </tbody>
-                                        <tfoot>
-                                        </tfoot>
-                                    </table>
-                                </div>
 
-                                <p></p> <!-- /.row -->
-                            </div>
-                            <!-- /.container-fluid -->
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-body p-0">
+                            <table class="table table projects">
+                                <thead>
+                                    <tr>
+
+                                        <th style="width: 20%">
+                                            ID Pelanggan
+                                        </th>
+                                        <th style="width: 20%">
+                                            Alamat
+                                        </th>
+
+                                        <th style="width: 18%">
+                                            Telepon
+                                        </th>
+                                        <th style="width: 18%">
+                                            Harga
+                                        </th>
+                                        <th style="width: 8%" class="text-center">
+                                            Aksi
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if ($getpayment->num_rows() > 0) {
+                                        foreach ($getpayment->result() as $row) {
+                                    ?>
+                                            <tr>
+
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->id_device; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->alamat; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->telp; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        <?php echo $row->harga; ?>
+                                                    </a>
+                                                </td>
+                                                <td class="project-state">
+                                                    <?php echo anchor('pengepul/payment/pay/' . $row->id, '<div class="btn btn-success btn-sm">Bayar</div>') ?>
+                                                </td>
+                                            </tr>
+                                    <?php }
+                                    } else {
+                                    }
+                                    ?>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>

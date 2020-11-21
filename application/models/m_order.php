@@ -40,7 +40,7 @@ class m_order extends CI_Model
         $this->db->delete($data);
     }
 
-    public function update_order($id_order, $status_code) 
+    public function update_order($id_order, $status_code)
     {
         $condition = array(
             'id' => $id_order
@@ -54,12 +54,13 @@ class m_order extends CI_Model
 
     public function getbyStatus()
     {
+        $condition = array(
+            'status' != 0
+        );
         $this->db->select('*');
-        $this->db->where('status !=', 0);
+        $this->db->where($condition);
         $this->db->from('ordering');
-        $query = $this->db->get();
-        $set = $query->row();
-        return $set->status;
+        return $this->db->get();
     }
 
     public function getprocessorder($id_user)

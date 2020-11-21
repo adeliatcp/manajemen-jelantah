@@ -22,6 +22,7 @@ class Transaction extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_payment');
 
         $user = $this->session->userdata('id_role');
 
@@ -40,6 +41,12 @@ class Transaction extends CI_Controller
     {
 
         $this->load->view('admin/Transaction');
+    }
+
+    public function history()
+    {
+        $data['history'] = $this->m_payment->verif();
+        $this->load->view('admin/History', $data);
     }
 
     // anything else just declare new function

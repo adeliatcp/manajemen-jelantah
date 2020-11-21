@@ -25,6 +25,7 @@ class Dashboard extends CI_Controller
         // misal jika dia bukan type admin, maka redirect ke halaman "Ups kamu tyda bole akses"
 
         $this->load->library('session');
+        $this->load->model('m_payment');
 
         /**
          * ini di buat pas login, generate session
@@ -49,21 +50,22 @@ class Dashboard extends CI_Controller
         }
     }
 
-    function page_admin()
-    {
-        if ($this->session->userdata('id_role') !== '3') {
-            redirect('auth/login', 'refresh');
-        } else {
-            redirect('admin/Dashboard');
-        }
-    }
-
     // method - method yang diperlukan untuk fungsionalitas Dashboard
 
     public function index()
     {
+        $data["user"] = $this->m_payment->getbyIduser();
+        $data["pengepul"] = $this->m_payment->getbyIdpengepul();
+        $this->load->view('admin/dashboard', $data);
+    }
 
-        $this->load->view('admin/dashboard');
+    public function pay_validation($id_payment)
+    {
+        $bool_pay = $this->input->get('confirm', TRUE);
+        // true || false
+        $status_code = filter_var($bool_pay, FILTER_VALIDATE_BOOLEAN) ? 2 : 3;
+        $this->m_payment->update_payment($id_payment, $status_code);
+        redirect('admin/dashboard');
     }
 
     // anything else just declare new function

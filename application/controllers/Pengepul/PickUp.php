@@ -10,7 +10,6 @@ class PickUp extends CI_Controller
         $this->load->library('session');
         $this->load->model('m_order');
 
-
         $user = $this->session->userdata('id_role');
 
         if ($user == NULL) {
@@ -26,6 +25,18 @@ class PickUp extends CI_Controller
         $data["getprocessorder"] = $this->m_order->getprocessorder($this->session->id);
         $this->load->view('pengepul/PickUp', $data);
     }
+
+
+    public function pickup_success()
+    {
+        $data["getpayment"] = $this->m_order->getpayment($this->session->id);
+        $this->load->view('pengepul/PickupSuccess', $data);
+    }
+
+
+
+
+
 
 
     // anything else just declare new function

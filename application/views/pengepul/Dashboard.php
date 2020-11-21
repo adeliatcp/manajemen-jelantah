@@ -129,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/pickup/pickup_success'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
@@ -137,7 +137,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/payment/payment_history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
@@ -221,36 +221,36 @@
                                         if ($getbyIduser->num_rows() > 0) {
                                             foreach ($getbyIduser->result() as $row) {
                                         ?>
-                                            <td>
-                                                <?php echo $row->name; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->id_device; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->alamat; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->telp; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->harga; ?>
-                                            </td>
+                                                <td>
+                                                    <?php echo $row->name; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->id_device; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->alamat; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->telp; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->harga; ?>
+                                                </td>
 
-                                            <td class="project-state">
-                                                <a class="btn btn-success btn-sm" href="<?= base_url('pengepul/order/' . $row->id . '?confirm=true'); ?>">
-                                                    <i class="fas fa-check">
-                                                    </i>
-                                                </a>
-                                                <a class="btn btn-danger btn-sm" href="<?= base_url('pengepul/order/' . $row->id . '?confirm=false'); ?>">
-                                                    <i class="fas fa-times">
-                                                    </i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php 
+                                                <td class="project-state">
+                                                    <a class="btn btn-success btn-sm" href="<?= base_url('pengepul/order/' . $row->id . '?confirm=true'); ?>">
+                                                        <i class="fas fa-check">
+                                                        </i>
+                                                    </a>
+                                                    <a class="btn btn-danger btn-sm" href="<?= base_url('pengepul/order/' . $row->id . '?confirm=false'); ?>">
+                                                        <i class="fas fa-times">
+                                                        </i>
+                                                    </a>
+                                                </td>
+                                                </tr>
+                                        <?php
                                             }
-                                        } 
+                                        }
                                         ?>
                                     </tbody>
                                     <tfoot>

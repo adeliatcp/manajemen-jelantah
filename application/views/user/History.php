@@ -117,7 +117,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('user/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('user/order/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon 
                                 fas fa-hourglass-half"></i>
                                 <p> Transaksi </p>
@@ -165,9 +165,11 @@
                                         <th style="width: 20%">
                                             ID Perangkat
                                         </th>
-
                                         <th style="width: 18%">
-                                            Jumlah yang didapatkan
+                                            Dana yang didapatkan
+                                        </th>
+                                        <th style="width: 18%">
+                                            Tanggal Transaksi
                                         </th>
                                         <th style="width: 8%" class="text-center">
                                             Status
@@ -176,22 +178,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-
-                                        <td>
-                                            -
-                                        </td>
-                                        <td>
-                                            -
-                                        </td>
-                                        <td>
-                                            -
-                                        </td>
-
-                                        <td class="project-state">
-                                            <span class="badge badge-success">-</span>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    foreach ($history->result() as $row) {
+                                    ?>
+                                        <tr>
+                                            <td>
+                                                <a> <?php echo $row->name; ?> </a>
+                                            </td>
+                                            <td>
+                                                <a> <?php echo $row->id_device; ?> </a>
+                                            </td>
+                                            <td>
+                                                <a> Rp. <?php echo $row->bill; ?>,- </a>
+                                            </td>
+                                            <td>
+                                                <a> <?php echo $row->date; ?> </a>
+                                            </td>
+                                            <?php if ($row->status == 1) { ?>
+                                                <td class="project-state">
+                                                    <span class="badge badge-warning">Menunggu Verifikasi</span>
+                                                </td>
+                                            <?php
+                                            } else if ($row->status == 2) { ?>
+                                                <td class="project-state">
+                                                    <span class="badge badge-success">Berhasil</span>
+                                                </td>
+                                            <?php } else { ?>
+                                                <td class="project-state">
+                                                    <span class="badge badge-danger">Gagal</span>
+                                                </td>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+                                        </tr>
                                 </tbody>
                                 <tfoot>
                                 </tfoot>

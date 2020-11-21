@@ -1421,13 +1421,14 @@ section {
 }
 
 /* progress bar */
-#modded .progress {
+/* progress bar */
+.modded .progress {
     min-height: 36px;
     overflow: hidden;
     position: relative;
 }
 
-#modded .progress span {
+.modded .progress span {
     position: relative;
     float: left;
     color: #fff;
@@ -1435,7 +1436,7 @@ section {
     z-index: 2;
 }
 
-#modded .progress span i {
+.modded .progress span i {
     width: inherit;
     font-size: inherit;
     position: relative;
@@ -1443,7 +1444,7 @@ section {
     margin-left: 8px;
 }
 
-#modded .progress .determinate {
+.modded .progress .determinate {
     width: 0;
     -webkit-transition: width 1s ease-in-out;
     transition: width 1s ease-in-out;
@@ -1454,18 +1455,18 @@ section {
     white-space: nowrap;
 }
 
-#modded ul.collapsible {
+.modded ul.collapsible {
     padding: 0;
     border: none;
     border-radius: 0;
     box-shadow: none;
 }
 
-#modded ul.collapsible li {
+.modded ul.collapsible li {
     margin-bottom: 14px;
 }
 
-#modded ul.collapsible .collapsible-header {
+.modded ul.collapsible .collapsible-header {
     padding: 0;
     border-bottom: 0;
 }

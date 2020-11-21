@@ -47,7 +47,7 @@ class Dashboard extends CI_Controller
      * url = google.com/order/1?confirm=true
      */
 
-    public function order_validation($id_order) 
+    public function order_validation($id_order)
     {
         $bool_order = $this->input->get('confirm', TRUE);
         // true || false

@@ -110,15 +110,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/transaction'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fa fa-check-square"></i>
-                                <p>
-                                    Transaksi
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('admin/transaction/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
@@ -152,34 +144,92 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row" style="margin-left:20%; margin-right:10%">
-                        <div class="col-lg-5 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>10</h3>
-                                    <p>Jumlah Pelanggan</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person"></i>
-                                </div>
-                                <a href="#" class="small-box-footer"> Lihat Data Pelanggan <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- /.info-box-content -->
+                    <!-- /.info-box -->
+                    <br></br>
+                    <!-- Default box -->
+                    <div class="col-md-11" style="margin:auto;">
+                        <div class="card">
+                            <div class="card-header" style="background-color:#D57E1B ;">
+                                <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE;"><b>Daftar Pemesan Penjemputan</b></h2>
                             </div>
+                            <div class="card-body p-0">
+                                <table class="table table projects">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 18%">
+                                                Nama Pemesan
+                                            </th>
+                                            <th style="width: 18%">
+                                                ID Perangkat
+                                            </th>
+                                            <th style="width: 20%">
+                                                Alamat
+                                            </th>
+
+                                            <th style="width: 18%">
+                                                Telepon
+                                            </th>
+                                            <th style="width: 15%">
+                                                Harga
+                                            </th>
+                                            <th style="width: 10%" class="text-center">
+                                                Aksi
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <?php
+                                            if ($user->num_rows() > 0) {
+                                                foreach ($user->result() as $row) {
+                                            ?>
+                                                    <td>
+                                                        <?php echo $row->name; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row->id_device; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row->address; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row->telp; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row->bill; ?>
+                                                    </td>
+
+                                                    <td class="project-state">
+                                                        <a class="btn btn-success btn-sm" href="<?= base_url('admin/verif/' . $row->id . '?confirm=true'); ?>">
+                                                            <i class="fas fa-check">
+                                                            </i>
+                                                        </a>
+                                                        <a class="btn btn-danger btn-sm" href="<?= base_url('admin/verif/' . $row->id . '?confirm=false'); ?>">
+                                                            <i class="fas fa-times">
+
+                                                            </i>
+                                                        </a>
+                                                    </td>
+                                        </tr>
+                                <?php
+                                                }
+                                            }
+                                ?>
+                                    </tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- small box -->
-                        <div class="col-lg-5 col-6">
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>5</h3>
-                                    <p>Jumlah Pengepul</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Lihat Data Pengepul <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
+                        </form>
+
+
+                        <!-- /.container-fluid -->
             </section>
+            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">

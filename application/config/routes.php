@@ -55,6 +55,7 @@ $route['default_controller'] = 'Home';
 /** --------- routes admin -------------- */
 $route['admin/dashboard'] = 'admin/Dashboard';
 $route['admin'] = 'admin/Dashboard';
+$route['admin/verif/(:num)'] = 'admin/Dashboard/pay_validation/$1';
 
 
 /** --------- routes user -------------- */
@@ -69,6 +70,8 @@ $route['pengepul/dashboard'] = "pengepul/Dashboard";
 $route['pengepul'] = "pengepul/Dashboard";
 
 $route['pengepul/order/(:num)'] = 'pengepul/Dashboard/order_validation/$1';
+$route['pengepul/payment/pay/(:any)'] = 'pengepul/payment/index/$1';
+
 
 
 $route['404_override'] = '';

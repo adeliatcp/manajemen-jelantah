@@ -61,7 +61,6 @@ class Device extends CI_Controller
 
     public function editdevice($id_device)
     {
-        $this->load->model('m_device');
         $data['device'] = $this->m_device->editdata($id_device);
         $this->load->view('user/editdevice', $data);
     }

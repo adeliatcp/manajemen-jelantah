@@ -22,6 +22,8 @@ class Payment extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_auth');
+        $this->load->model('m_payment');
 
         $user = $this->session->userdata('id_role');
 
@@ -33,10 +35,39 @@ class Payment extends CI_Controller
         }
     }
 
-    public function index()
+    public function index($id_ordering)
     {
+        $data['getdatabyId'] = $this->m_auth->getdatabyId($this->session->id);
+        $data['getdatapayment'] = $this->m_payment->getdatapayment($id_ordering);
+        $this->load->view('pengepul/Payment', $data);
+    }
 
-        $this->load->view('pengepul/Payment');
+    public function payment_validation()
+    {
+        $data = array(
+            'id_ordering' => $this->input->post('idorder'),
+            'id_pengepul' => $this->session->id,
+            'id_user' => $this->input->post('iduser'),
+            'id_device'   => $this->input->post('iddevice'),
+            'bill'      =>  $this->input->post('bill'),
+            'date' => $this->input->post('date'),
+            'status' => 1 //  1 = sedang proses; 2 = berhasil; 3 = gagal
+        );
+        $this->db->insert('payment', $data);
+        redirect('pengepul/pickup/pickup_success');
+    }
+
+    public function delete()
+    {
+        $this->m_payment->deletedata('id', 'ordering');
+        redirect('pengepul/pickup/pickup_success');
+    }
+
+
+    public function payment_history()
+    {
+        $data['history'] = $this->m_payment->gethistory($this->session->id);
+        $this->load->view('pengepul/History', $data);
     }
 
     // anything else just declare new function

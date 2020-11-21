@@ -118,7 +118,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('pengepul/pickuphistory'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/pickup/pickup_success'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-money-bill"></i>
                                 <p>
                                     Pembayaran
@@ -126,7 +126,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('pengepul/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('pengepul/payment/payment_history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     Riwayat Transaksi
@@ -169,16 +169,18 @@
                             <table class="table table projects">
                                 <thead>
                                     <tr>
-
                                         <th style="width: 20%">
-                                            ID Pelanggan
+                                            Nama Pemesan
                                         </th>
                                         <th style="width: 20%">
-                                            ID Pengepul
+                                            ID Perangkat
                                         </th>
 
                                         <th style="width: 18%">
                                             Dana yang didapatkan
+                                        </th>
+                                        <th style="width: 18%">
+                                            Tanggal Transaksi
                                         </th>
                                         <th style="width: 8%" class="text-center">
                                             Status
@@ -187,50 +189,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-
-                                        <td>
-                                            <a>
-                                                lumpianur
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                p_budi
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Rp 56.000,-
-                                            </a>
-                                        </td>
-
-                                        <td class="project-state">
-                                            <span class="badge badge-success">Berhasil</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-
-                                        <td>
-                                            <a>
-                                                rotibakar
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                p_budi
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a>
-                                                Rp 56.000,-
-                                            </a>
-                                        </td>
-
-                                        <td class="project-state">
-                                            <span class="badge badge-success">Berhasil</span>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    foreach ($history->result() as $row) {
+                                    ?>
+                                        <tr>
+                                            <td>
+                                                <a> <?php echo $row->name; ?> </a>
+                                            </td>
+                                            <td>
+                                                <a> <?php echo $row->id_device; ?> </a>
+                                            </td>
+                                            <td>
+                                                <a> Rp. <?php echo $row->bill; ?>,- </a>
+                                            </td>
+                                            <td>
+                                                <a> <?php echo $row->date; ?> </a>
+                                            </td>
+                                            <?php if ($row->status == 1) { ?>
+                                                <td class="project-state">
+                                                    <span class="badge badge-warning">Menunggu Verifikasi</span>
+                                                </td>
+                                            <?php
+                                            } else if ($row->status == 2) { ?>
+                                                <td class="project-state">
+                                                    <span class="badge badge-success">Berhasil</span>
+                                                </td>
+                                            <?php } else { ?>
+                                                <td class="project-state">
+                                                    <span class="badge badge-danger">Gagal</span>
+                                                </td>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+                                        </tr>
                                 </tbody>
                                 <tfoot>
                                 </tfoot>
@@ -243,6 +235,7 @@
 
                     <!-- /.row -->
                 </div>
+                <br></br>
                 <!-- /.container-fluid -->
             </section>
             <!-- /.content -->

@@ -46,22 +46,21 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" style="color: #C05419;" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
+                        <?php foreach ($getbyStatus->result() as $row) { ?>
+                            <?php if ($row->status == 1) { ?>
+                                <span class="badge badge-warning navbar-badge">1</span>
+
+                            <?php } else if ($row->status == 3) { ?>
+                                <span class="badge badge-danger navbar-badge">1</span>
                         <?php
-                        if (isset($getbyStatus) & $getbyStatus == 1) {
-                        ?>
-                            <span class="badge badge-warning navbar-badge">1</span>
-                        <?php } else if (isset($getbyStatus) & $getbyStatus == 3) {
-                        ?>
-                            <span class="badge badge-danger navbar-badge">1</span>
-                        <?php
-                        } else {
+                            }
                         }
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-header">Pemberitahuan</span>
                         <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('user/verifpickup'); ?>" class="dropdown-item">
+                        <a href="<?= base_url('user/order/verif_pickup'); ?>" class="dropdown-item">
                             <i class="fas fa-envelope mr-2"></i> Pemberitahuan Baru
                             <span class="float-right text-muted text-sm"></span>
                         </a>
@@ -155,7 +154,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('user/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
+                            <a href="<?= base_url('user/order/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon 
                                 fas fa-hourglass-half"></i>
                                 <p> Transaksi </p>
