@@ -42,6 +42,7 @@ class Transaction extends CI_Controller
         $this->load->view('admin/Transaction');
     }
 
+
     public function payment_validation($id_payment)
     {
         $bool_pay = $this->input->get('confirm', TRUE);
@@ -55,9 +56,12 @@ class Transaction extends CI_Controller
         $id_pengepul = $payment->id_pengepul;
         $bill = $payment->bill;
         // proses saldo 1 -> pengepul dicek dulu saldonya cukup atau tidak, kalau ngga cukup return, kalau cukup diproses
+        $bool_saldo = $this->m_payment->update_saldo($id_pengepul, $bill); // false
+        if ($bool_saldo == false) return;
+        // proses saldo 2 -> hanya akan diproses kalau proses saldo 1 tidak return
+        $this->m_payment->update_saldo($id_user, $bill); // false 
 
-        $bool_saldo = $this->m_payment->update_saldo($id_pengepul, $bill);
-        // proses saldo 2 -> hanya akan diproses kalau proses saldo 1 tidak return 
+        $this->m_payment->update_payment($id_payment, $status_code);
         redirect('admin/dashboard');
     }
 

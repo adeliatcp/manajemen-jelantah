@@ -79,22 +79,31 @@ class m_payment extends CI_Model
     {
         $condition = array(
             'id' => $id_user,
-            'saldo >=' => $bill
         );
 
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where($condition);
+        
         $query = $this->db->get();
-        $row = $query->result();
-        $bool_update = $row ? true : false;
+        $user = $query->result();
+
+        if (!$user) return; // tidak ada user yang dimaksud
+        
+        $bool_update = true;
+        // ketika masuk ke dalam blok if, dia bisa berubah jadi false, ketika saldonya tidak cukup dan id role 2
+        if ($user->id_role == 2) {
+            $bool_update = ($user->saldo >= $bill) ? true : false;
+        }
+
         if ($bool_update == true) {
             $data = array(
-                'saldo' => $row->saldo + $bill
+                'saldo' => ($user->id_role == 2) ? $user->saldo - $bill : $user->saldo + $bill
             );
             $this->db->update('user', $data);
         }
-        return $bool_update;
+
+        return $bool_update; // true , false
     }
 
 
