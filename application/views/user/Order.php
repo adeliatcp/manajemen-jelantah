@@ -111,16 +111,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('user/order'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fa fa-truck"></i>
-                                <p> Pesan Jasa Pengepul </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="<?= base_url('user/order/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon 
                                 fas fa-hourglass-half"></i>
-                                <p> Transaksi </p>
+                                <p> Riwayat Transaksi </p>
                             </a>
                         </li>
                     </ul>
@@ -160,24 +154,21 @@
                                 <!-- form start -->
                                 <form role="form" action="<?php echo base_url('user/order/create_order'); ?>" method="POST">
                                     <div class="card-body">
-
-                                        <div class="form-group">
-                                            <label for="PilihPengepul" style="color: #474747;">Pilih Perangkat</label>
-                                            <select class="form-control" name="pilihdevice">
-                                                <?php
-                                                if ($getbyId->num_rows() > 0) {
-                                                    foreach ($getbyId->result() as $row) {
-                                                ?>
-                                                        <option value="<?php echo $row->id ?>"><?php echo $row->id ?></option>
-                                                <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
+                                        <?php
+                                        if ($getdevice->num_rows() > 0) {
+                                            foreach ($getdevice->result() as $row) {
+                                        ?>
+                                                <div class="form-group">
+                                                    <label for="id" style="color: #474747;">ID Perangkat</label>
+                                                    <input type="text" class="form-control" id="iddevice" name="device" value="<?php echo $row->id ?>" readonly>
+                                                </div>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                         <div class="form-group">
                                             <label for="Alamat" style="color: #474747;">Alamat Lengkap</label>
-                                            <input type="text" class="form-control" id="address" name="address">
+                                            <input type="text" class="form-control" id="address" name="address" value="<?php echo $row->alamat ?>">
                                         </div>
                                         <?php
                                         if ($getdatabyId->num_rows() > 0) {

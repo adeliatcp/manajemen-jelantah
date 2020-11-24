@@ -44,8 +44,9 @@ class Payment extends CI_Controller
 
     public function payment_validation()
     {
+        $id_ordering = $this->input->post('idorder');
         $data = array(
-            'id_ordering' => $this->input->post('idorder'),
+            'id_ordering' => $id_ordering,
             'id_pengepul' => $this->session->id,
             'id_user' => $this->input->post('iduser'),
             'id_device'   => $this->input->post('iddevice'),
@@ -54,15 +55,9 @@ class Payment extends CI_Controller
             'status' => 1 //  1 = sedang proses; 2 = berhasil; 3 = gagal
         );
         $this->db->insert('payment', $data);
-        redirect('pengepul/pickup/pickup_success');
+        $this->m_payment->update($id_ordering);
+        redirect('pengepul/payment/payment_history');
     }
-
-    public function delete()
-    {
-        $this->m_payment->deletedata('id', 'ordering');
-        redirect('pengepul/pickup/pickup_success');
-    }
-
 
     public function payment_history()
     {

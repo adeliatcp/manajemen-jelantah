@@ -29,7 +29,6 @@ class m_device extends CI_Model
         $this->db->delete($table);
     }
 
-
     public function update($where, $data, $table)
     {
         $this->db->where($where);

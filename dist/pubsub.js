@@ -7,7 +7,7 @@ export class PubSub {
         // ubah nilai element ketika message arrive
         this.element_bar = element_bar;
         this.element_text = element_text;
-        
+
         // buat instansiasi client
         this.client = new Paho.Client("tailor.cloudmqtt.com", 36503, client_id);
 

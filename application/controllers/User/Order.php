@@ -37,8 +37,9 @@ class Order extends CI_Controller
         }
     }
 
-    public function index()
+    public function index($id_device)
     {
+        $data['getdevice'] = $this->m_order->orderdata($id_device);
         $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $data["getbyIdrole"] = $this->m_order->getbyIdrole();
         $data["getdatabyId"] = $this->m_auth->getdatabyId($this->session->id);
@@ -49,7 +50,7 @@ class Order extends CI_Controller
     {
         $data = array(
             'id_user' => $this->session->id,
-            'id_device' => $this->input->post('pilihdevice'),
+            'id_device' => $this->input->post('device'),
             'alamat'   =>  $this->input->post('address'),
             'telp'      =>  $this->input->post('telp'),
             'id_pengepul' => $this->input->post('pilihpengepul'),

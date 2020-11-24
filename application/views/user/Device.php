@@ -74,6 +74,7 @@
         }
     </style>
 
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -169,16 +170,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('user/order'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
-                                <i class="nav-icon fa fa-truck"></i>
-                                <p> Pesan Jasa Pengepul </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="<?= base_url('user/order/history'); ?>" class="nav-link" style="color: #F8F2EE; font-size: 15px;">
                                 <i class="nav-icon 
                                 fas fa-hourglass-half"></i>
-                                <p> Transaksi </p>
+                                <p> Riwayat Transaksi </p>
                             </a>
                         </li>
                     </ul>
@@ -228,12 +223,12 @@
                                     <p>Persentase Drum <?php echo $id_device ?></p>
                                     <div class="bar-graph">
                                         <div id="capacity-bar" class="graph">
-                                        <p id="capacity-text">0%</p>
+                                            <p id="capacity-text">0%</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <span>Grafik disamping adalah informasi tentang minyak jelantah yang
+                                <span>Persentase diatas adalah informasi tentang minyak jelantah yang
                                     telah dikumpulkan. Pesan jasa pengepul untuk menjemputnya apabila semakin besar jumlahnya.
                                 </span>
                                 <br></br>
@@ -241,7 +236,8 @@
                             </div>
                             <!-- /.row -->
 
-                            <a href="" class="btn" href="order" style="background-color: #FF951B; color: white; float:right;">Pesan Penjemputan</a>
+                            <a href="<?= base_url('user/order/for/' . $id_device); ?>" class="btn" style="background-color: #FF951B; color: white; float:right;">Pesan Penjemputan</a>
+
                         </div><!-- /.container-fluid -->
 
             </section>

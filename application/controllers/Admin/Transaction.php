@@ -39,13 +39,32 @@ class Transaction extends CI_Controller
 
     public function index()
     {
-
         $this->load->view('admin/Transaction');
+    }
+
+    public function payment_validation($id_payment)
+    {
+        $bool_pay = $this->input->get('confirm', TRUE);
+        // true || false
+        $status_code = filter_var($bool_pay, FILTER_VALIDATE_BOOLEAN) ? 2 : 3;
+
+        // dapatin 1 row data dari tabel payment dimana id = id_payment
+        $payment = $this->m_payment->getById($id_payment)->result();
+        // ambil 3 data (id_user, id_pengepul, bill)
+        $id_user = $payment->id_user;
+        $id_pengepul = $payment->id_pengepul;
+        $bill = $payment->bill;
+        // proses saldo 1 -> pengepul dicek dulu saldonya cukup atau tidak, kalau ngga cukup return, kalau cukup diproses
+
+        $bool_saldo = $this->m_payment->update_saldo($id_pengepul, $bill);
+        // proses saldo 2 -> hanya akan diproses kalau proses saldo 1 tidak return 
+        redirect('admin/dashboard');
     }
 
     public function history()
     {
         $data['history'] = $this->m_payment->verif();
+        //$data = $this->m_payment->saldouser();
         $this->load->view('admin/History', $data);
     }
 

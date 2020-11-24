@@ -33,6 +33,7 @@ class Device extends CI_Controller
 
     public function index($id_device)
     {
+        $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $this->load->view('user/device', ['id_device' => $id_device]);
     }
 

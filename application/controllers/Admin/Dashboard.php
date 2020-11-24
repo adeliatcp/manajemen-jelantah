@@ -59,14 +59,7 @@ class Dashboard extends CI_Controller
         $this->load->view('admin/dashboard', $data);
     }
 
-    public function pay_validation($id_payment)
-    {
-        $bool_pay = $this->input->get('confirm', TRUE);
-        // true || false
-        $status_code = filter_var($bool_pay, FILTER_VALIDATE_BOOLEAN) ? 2 : 3;
-        $this->m_payment->update_payment($id_payment, $status_code);
-        redirect('admin/dashboard');
-    }
+
 
     // anything else just declare new function
 

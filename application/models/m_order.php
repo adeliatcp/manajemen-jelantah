@@ -10,6 +10,17 @@ class m_order extends CI_Model
         $this->load->library('session');
     }
 
+    function orderdata($id_device, $id_user = null)
+    {
+        $condition = array(
+            'id' => $id_device
+        );
+        if ($id_user != null) $condition += ['id_user' => $id_user];
+        $this->db->from('device');
+        $this->db->where($condition);
+        return $this->db->get();
+    }
+
     public function getbyIdrole()
     {
         $condition = array(

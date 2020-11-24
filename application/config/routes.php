@@ -55,7 +55,7 @@ $route['default_controller'] = 'Home';
 /** --------- routes admin -------------- */
 $route['admin/dashboard'] = 'admin/Dashboard';
 $route['admin'] = 'admin/Dashboard';
-$route['admin/verif/(:num)'] = 'admin/Dashboard/pay_validation/$1';
+$route['admin/verif/payment/(:num)'] = 'admin/Transaction/payment_validation/$1';
 
 
 /** --------- routes user -------------- */
@@ -64,6 +64,7 @@ $route['user'] = "user/Dashboard";
 $route['user/device/edit/(:any)'] = 'user/Device/editdevice/$1';
 
 $route['user/device/(:any)'] = 'user/Device/index/$1';
+$route['user/order/for/(:any)'] = 'user/order/index/$1';
 
 
 
