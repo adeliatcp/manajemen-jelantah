@@ -89,10 +89,14 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Admin 1</b></a>
+                        <?php
+                        foreach ($name->result() as $row) {
+                        ?>
+                            <a class="d-block" style=" font-family:Segoe UI; color: white;"><b><?php echo $row->name ?></b></a>
+                        <?php
+                        } ?>
                     </div>
                 </div>
 
@@ -151,7 +155,7 @@
                     <div class="col-md-11" style="margin:auto;">
                         <div class="card">
                             <div class="card-header" style="background-color:#D57E1B ;">
-                                <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE;"><b>Daftar Pemesan Penjemputan</b></h2>
+                                <h2 class="card-title" style="font-size: 16px; font-family:Trebuchet MS; color: #F8F2EE;"><b>Daftar Pembayaran</b></h2>
                             </div>
                             <div class="card-body p-0">
                                 <table class="table table projects">
@@ -202,11 +206,11 @@
                                                     </td>
 
                                                     <td class="project-state">
-                                                        <a class="btn btn-success btn-sm" href="<?= base_url('admin/verif/' . $row->id . '?confirm=true'); ?>">
+                                                        <a class="btn btn-success btn-sm" href="<?= base_url('admin/verif/payment/' . $row->id . '?confirm=true'); ?>">
                                                             <i class="fas fa-check">
                                                             </i>
                                                         </a>
-                                                        <a class="btn btn-danger btn-sm" href="<?= base_url('admin/verif/' . $row->id . '?confirm=false'); ?>">
+                                                        <a class="btn btn-danger btn-sm" href="<?= base_url('admin/verif/payment/' . $row->id . '?confirm=false'); ?>">
                                                             <i class="fas fa-times">
 
                                                             </i>

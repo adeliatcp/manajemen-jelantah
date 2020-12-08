@@ -78,10 +78,14 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Admin 1</b></a>
+                        <?php
+                        foreach ($getdatabyId->result() as $row) {
+                        ?>
+                            <a class="d-block" style=" font-family:Segoe UI; color: white;"><b><?php echo $row->name ?></b></a>
+                        <?php
+                        } ?>
                     </div>
                 </div>
 
@@ -166,10 +170,6 @@
                                                 <div class="form-group">
                                                     <label for="InputTelp">Telepon</label>
                                                     <input type="text" class="form-control" id="Telp" name="telp" value="<?php echo $row->telp ?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="InputAlamat">Alamat</label>
-                                                    <input type="text" class="form-control" id="Address" name="address" value="<?php echo $row->address ?>">
                                                 </div>
 
                                                 <!--  <div class="form-group">

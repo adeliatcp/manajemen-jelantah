@@ -89,14 +89,13 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
                         <?php
                         if ($getdatabyId->num_rows() > 0) {
                             foreach ($getdatabyId->result() as $row) {
                         ?>
-                                <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><?php echo $row->name ?></a>
+                                <a class="d-block" style=" font-family:Segoe UI; color: white;"><b><?php echo $row->name ?></b></a>
                         <?php
                             }
                         } ?>
@@ -225,8 +224,9 @@
                             ?>
                                 </form> <!-- /.card -->
                             </div>
+                            <br></br><br></br>
                         </div>
-                        <br></br><br></br>
+
                         <!-- /.row -->
                     </div>
             </section>

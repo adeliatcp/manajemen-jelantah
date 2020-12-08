@@ -45,10 +45,9 @@ class m_order extends CI_Model
         return $this->db->get();
     }
 
-    public function no_valid($condition, $data)
+    public function ordering($data, $table)
     {
-        $this->db->where($condition);
-        $this->db->delete($data);
+        $this->db->insert($table, $data);
     }
 
     public function update_order($id_order, $status_code)
@@ -63,9 +62,28 @@ class m_order extends CI_Model
         $this->db->update('ordering', $data);
     }
 
-    public function getbyStatus()
+    // public function getorderbyId($id_ordering, $id_device)
+    //{
+    //   $condition = array(
+    //      'id' => $id_ordering,
+    //     'id_device' => $id_device
+    //   );
+    //  $this->db->from('ordering');
+    //  $this->db->where($condition);
+    //   return $this->db->get();
+    //}
+
+    public function delete_order($data, $table)
+    {
+        $this->db->where($data);
+        // $this->db->join('user', 'user.id = ordering.id_user');
+        $this->db->delete($table);
+    }
+
+    public function getbyStatus($id_user)
     {
         $condition = array(
+            'id_user' => $id_user,
             'status' != 0
         );
         $this->db->select('*');
@@ -81,8 +99,10 @@ class m_order extends CI_Model
             'status' => 1
 
         );
+        $this->db->select('ordering.*, user.name, user.email, user.telp, user.address');
         $this->db->from('ordering');
         $this->db->where($condition);
+        $this->db->join('user', 'user.id = ordering.id_user');
         // https://codeigniter.com/userguide3/database/results.html
         return $this->db->get();
     }
@@ -94,8 +114,10 @@ class m_order extends CI_Model
             'status' => 2
 
         );
+        $this->db->select('ordering.*, user.name, user.email, user.telp, user.address');
         $this->db->from('ordering');
         $this->db->where($condition);
+        $this->db->join('user', 'user.id = ordering.id_user');
         // https://codeigniter.com/userguide3/database/results.html
         return $this->db->get();
     }

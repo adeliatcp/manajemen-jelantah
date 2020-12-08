@@ -124,12 +124,17 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user (optional) -->
+
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/lumpia.jpg" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Lumpia Nur</b></a>
+                        <?php
+                        foreach ($saldo->result() as $row) {
+                        ?>
+                            <a class="d-block" style=" font-family:Segoe UI; color: white;"><b><?php echo $row->name ?></b></a>
+                        <?php
+                        } ?>
                     </div>
                 </div>
 
@@ -187,7 +192,9 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Saldo Anda</span>
-                                <span class="info-box-number">Rp 56.000,-</span>
+                                <?php foreach ($saldo->result() as $row) { ?>
+                                    <span class="info-box-number">Rp. <?php echo $row->saldo; ?>,-</span>
+                                <?php } ?>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -200,7 +207,7 @@
                         <div class="card">
                             <div class="card-header" style="background-color:#D57E1B ;">
                                 <h2 class="card-title" style="font-size: 17px; font-family:Trebuchet MS; color: #F8F2EE; text-align:center; "><b>Daftar Perangkat Anda</b></h2>
-                                <a class="btn btn-sm" href="<?= base_url('user/device/adddevice'); ?>" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>tambah perangkat</b></a>
+                                <a class="btn btn-sm" href="<?= base_url() . 'user/dashboard/adddevice'; ?>" role="button" style="background-color:white; color: #D57E1B; float:right;text-align:right; font-size: 11px; font-family:Trebuchet MS;"><b>tambah perangkat</b></a>
                             </div>
                             <div class=" card-body p-1">
                                 <table class="table table projects" style="size:center;">

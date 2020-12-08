@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_auth');
         $this->load->model('m_order');
 
         $user = $this->session->userdata('id_role');
@@ -38,6 +39,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+        $data["saldo"] = $this->m_auth->getdatabyId($this->session->id);
         $data["getbyIduser"] = $this->m_order->getbyIduser($this->session->id);
         $this->load->view('pengepul/dashboard', $data);
     }

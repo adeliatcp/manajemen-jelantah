@@ -89,12 +89,17 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Budi</b></a>
+                        <?php
+                        foreach ($name->result() as $row) {
+                        ?>
+                            <a class="d-block" style=" font-family:Segoe UI; color: white;"><b><?php echo $row->name ?></b></a>
+                        <?php
+                        } ?>
                     </div>
                 </div>
+
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -171,7 +176,7 @@
                                     <tr>
 
                                         <th style="width: 20%">
-                                            ID Pelanggan
+                                            Nama Pemesan
                                         </th>
                                         <th style="width: 20%">
                                             Alamat
@@ -191,14 +196,14 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($getpayment->num_rows() > 0) {
-                                        foreach ($getpayment->result() as $row) {
+                                    if ($datapayment->num_rows() > 0) {
+                                        foreach ($datapayment->result() as $row) {
                                     ?>
                                             <tr>
 
                                                 <td>
                                                     <a>
-                                                        <?php echo $row->id_device; ?>
+                                                        <?php echo $row->name; ?>
                                                     </a>
                                                 </td>
                                                 <td>

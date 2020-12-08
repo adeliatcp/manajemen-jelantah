@@ -65,6 +65,7 @@ $route['user/device/edit/(:any)'] = 'user/Device/editdevice/$1';
 
 $route['user/device/(:any)'] = 'user/Device/index/$1';
 $route['user/order/for/(:any)'] = 'user/order/index/$1';
+$route['user/order/again/(:num)'] = 'user/order/order_invalid/$1';
 
 
 

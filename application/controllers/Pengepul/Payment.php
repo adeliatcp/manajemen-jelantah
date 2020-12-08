@@ -54,13 +54,14 @@ class Payment extends CI_Controller
             'date' => $this->input->post('date'),
             'status' => 1 //  1 = sedang proses; 2 = berhasil; 3 = gagal
         );
-        $this->db->insert('payment', $data);
+        $this->m_payment->payment($data, 'payment');
         $this->m_payment->update($id_ordering);
         redirect('pengepul/payment/payment_history');
     }
 
     public function payment_history()
     {
+        $data['name'] = $this->m_auth->getdatabyId($this->session->id);
         $data['history'] = $this->m_payment->gethistory($this->session->id);
         $this->load->view('pengepul/History', $data);
     }

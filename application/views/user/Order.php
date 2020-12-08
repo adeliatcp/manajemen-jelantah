@@ -89,10 +89,14 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/lumpia.jpg" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Lumpia Nur</b></a>
+                        <?php
+                        foreach ($getdatabyId->result() as $row) {
+                        ?>
+                            <a class="d-block" style=" font-family:Segoe UI; color: white;"><b><?php echo $row->name ?></b></a>
+                        <?php
+                        } ?>
                     </div>
                 </div>
 
@@ -155,15 +159,14 @@
                                 <form role="form" action="<?php echo base_url('user/order/create_order'); ?>" method="POST">
                                     <div class="card-body">
                                         <?php
-                                        if ($getdevice->num_rows() > 0) {
-                                            foreach ($getdevice->result() as $row) {
+                                        foreach ($getdevice->result() as $row) {
                                         ?>
-                                                <div class="form-group">
-                                                    <label for="id" style="color: #474747;">ID Perangkat</label>
-                                                    <input type="text" class="form-control" id="iddevice" name="device" value="<?php echo $row->id ?>" readonly>
-                                                </div>
+
+                                            <div class="form-group">
+                                                <label for="id" style="color: #474747;">ID Perangkat</label>
+                                                <input type="text" class="form-control" id="iddevice" name="device" value="<?php echo $row->id ?>">
+                                            </div>
                                         <?php
-                                            }
                                         }
                                         ?>
                                         <div class="form-group">

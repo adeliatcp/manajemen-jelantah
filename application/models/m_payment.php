@@ -84,12 +84,12 @@ class m_payment extends CI_Model
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where($condition);
-        
+
         $query = $this->db->get();
-        $user = $query->result();
+        $user = $query->result()[0];
 
         if (!$user) return; // tidak ada user yang dimaksud
-        
+
         $bool_update = true;
         // ketika masuk ke dalam blok if, dia bisa berubah jadi false, ketika saldonya tidak cukup dan id role 2
         if ($user->id_role == 2) {
@@ -97,10 +97,9 @@ class m_payment extends CI_Model
         }
 
         if ($bool_update == true) {
-            $data = array(
-                'saldo' => ($user->id_role == 2) ? $user->saldo - $bill : $user->saldo + $bill
-            );
-            $this->db->update('user', $data);
+            $saldo = ($user->id_role == 2) ? $user->saldo - $bill : $user->saldo + $bill;
+            $this->db->where('id', $id_user);
+            $this->db->update('user', ['saldo' => $saldo]);
         }
 
         return $bool_update; // true , false
@@ -119,73 +118,6 @@ class m_payment extends CI_Model
     }
 
 
-    function saldouser($id_payment)
-    {
-        $this->db->select('saldo, payment.id');
-        $this->db->from('user');
-        $this->db->join('payment', 'payment.id_user = user.id');
-        $this->db->where('payment.id', $id_payment);
-        $res = $this->db->get();
-        print_r($res->result());
-        //die();
-    }
-    //$condition = array(floatval('user.saldo')  + floatval('payment.bill'));
-    //$this->db->select('saldo');
-    //$this->db->from('user');
-    //$this->db->where($condition);
-    //$this->db->join('payment', 'payment.id_pengepul = user.id');
-    //$query = $this->db->get();
-    //var_dump($query->result());
-    //die();
-    //return;
-
-
-    function saldopengepul()
-    {
-        $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('id');
-        $res = $this->db->get();
-        print_r($res->result());
-    }
-
-    function bill($id_payment)
-    {
-        $condition = array(
-            'id' => $id_payment
-        );
-        $this->db->select('bill');
-        $this->db->from('payment');
-        $this->db->where($condition);
-        $query = $this->db->get();
-        return ($query->result());
-        //die();
-    }
-
-    //function hitung($id_payment)
-    //{
-    //  $saldo = $this->m_payment->saldouser($id_payment);
-    // $bill = $this->m_payment->bill($id_payment);
-
-    //        $condition = $saldo + $bill;
-    //      $this->db->from('payment');
-    //    $this->db->join('user', 'user.id = payment.id_user');
-    //  $this->db->where('payment.id', $id_payment);
-    //  $this->db->where($condition);
-    //  $result = $this->db->set('saldo');
-    //print_r(array_sum($condition));
-    //$this->db->update('user', $data);
-    // var_dump($condition);
-    //   die();
-
-    // $this->db->trans_start();
-    // $this->db->set('saldo', 'total_set - 1');
-    // $this->db->set('price', 'price - 300.00');
-    // $this->db->where('user_id');
-    // $this->db->update('saldo');
-    // $this->db->trans_complete();
-
-
     public function verif()
     {
         $condition = array(
@@ -200,6 +132,21 @@ class m_payment extends CI_Model
         return $this->db->get();
     }
 
+    public function getnamepengepul()
+    {
+        $condition = array(
+            'status' != 0
+        );
+        $this->db->select('*');
+        $this->db->from('payment');
+        $this->db->where($condition);
+        $this->db->join('user', 'user.id = payment.id_pengepul');
+        // $this->db->join('user', 'user.id = payment.id_user');
+        // https://codeigniter.com/userguide3/database/results.html
+        return $this->db->get();
+    }
+
+
     public function userhistory($id_user)
     {
         $condition = array(
@@ -212,6 +159,11 @@ class m_payment extends CI_Model
         $this->db->join('user', 'user.id = payment.id_pengepul');
         // https://codeigniter.com/userguide3/database/results.html
         return $this->db->get();
+    }
+
+    public function payment($data, $table)
+    {
+        $this->db->insert($table, $data);
     }
 
     public function update($id_ordering)

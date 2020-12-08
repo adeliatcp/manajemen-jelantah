@@ -33,7 +33,7 @@
         /* Graph Sizes */
         .graph-container {
             display: flex;
-            margin: 10px 0;
+            margin: 20px 0;
             padding: 4px;
             max-width: 500px;
         }
@@ -47,15 +47,14 @@
         .bar-graph {
             height: 40px;
             position: relative;
-            background-color: #85dcff;
-            width: 400px;
+            width: 600px;
         }
 
         .bar-graph .graph {
-            height: 40px;
-            padding: 0;
-            margin: 0;
-            width: 100%;
+            height: 20px;
+            padding: 0px;
+            margin: 0px;
+            width: 200%;
             display: table;
         }
 
@@ -70,7 +69,7 @@
 
         .bar-graph .graph {
             width: 0.1%;
-            background-color: #0094f0;
+            background-color: brown;
         }
     </style>
 
@@ -148,10 +147,9 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/lumpia.jpg" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Lumpia Nur</b></a>
+                        <a class="d-block" style=" font-family:Segoe UI; color: white;"><b>Tahu Bulat Enak</b></a>
                     </div>
                 </div>
 
@@ -190,7 +188,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-10">
                             <p></p>
-                            <h1 style=" font-size: 27px; font-family:Segoe UI; color: #673E27;">Grafik Perangkat Tampung Minyak Jelantah</h1>
+                            <h1 style=" font-size: 27px; font-family:Segoe UI; color: #673E27;">Informasi Volume Minyak Jelantah</h1>
                             <p></p>
                         </div>
                         <div class="col-sm-7">

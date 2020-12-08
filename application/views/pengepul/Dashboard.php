@@ -100,10 +100,14 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>template/dist/img/avatar3.png" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block" style=" font-family:Segoe UI; color: white;"><b>Budi</b></a>
+                        <?php
+                        foreach ($saldo->result() as $row) {
+                        ?>
+                            <a class="d-block" style=" font-family:Segoe UI; color: white;"><b><?php echo $row->name ?></b></a>
+                        <?php
+                        } ?>
                     </div>
                 </div>
 
@@ -176,7 +180,9 @@
 
                             <div class="info-box-content" style="font-size: 14px;">
                                 <span class="info-box-text">Saldo Anda</span>
-                                <span class="info-box-number">Rp 56.000,-</span>
+                                <?php foreach ($saldo->result() as $row) { ?>
+                                    <span class="info-box-number">Rp. <?php echo $row->saldo; ?>,-</span>
+                                <?php } ?>
                             </div>
                             <!-- /.info-box-content -->
                         </div>

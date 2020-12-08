@@ -19,6 +19,7 @@ class Device extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_auth');
         $this->load->model('m_device');
 
         $user = $this->session->userdata('id_role');
@@ -37,22 +38,6 @@ class Device extends CI_Controller
         $this->load->view('user/device', ['id_device' => $id_device]);
     }
 
-    public function adddevice()
-    {
-        $this->load->view('user/adddevice');
-    }
-
-    public function tambah()
-    {
-        $data = array(
-            'id' =>  $this->input->post('id'),
-            'id_user' => $this->session->id,
-            'alamat'       =>  $this->input->post('alamat')
-        );
-        $this->db->insert('device', $data);
-        redirect('user/dashboard');
-    }
-
     public function deletedevice($id)
     {
         $data = array('id' => $id);
@@ -62,6 +47,7 @@ class Device extends CI_Controller
 
     public function editdevice($id_device)
     {
+        $data["name"] = $this->m_auth->getdatabyId($this->session->id);
         $data['device'] = $this->m_device->editdata($id_device);
         $this->load->view('user/editdevice', $data);
     }

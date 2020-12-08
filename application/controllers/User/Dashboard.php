@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_auth');
         $this->load->model('m_order');
         $this->load->model('m_device');
 
@@ -42,10 +43,30 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+        $data["saldo"] = $this->m_auth->getdatabyId($this->session->id);
         $data["getbyStatus"] = $this->m_order->getbyStatus($this->session->id);
         $data["getbyId"] = $this->m_device->getbyId($this->session->id);
         $this->load->view('user/dashboard', $data);
     }
+
+    public function adddevice()
+    {
+        $data["name"] = $this->m_auth->getdatabyId($this->session->id);
+        $this->load->view('user/AddDevice', $data);
+    }
+
+    public function add_device()
+    {
+        $data = array(
+            'id' =>  $this->input->post('id'),
+            'id_user' => $this->session->id,
+            'alamat'       =>  $this->input->post('alamat')
+        );
+        $this->m_device->add($data, 'device');
+        redirect('user/dashboard');
+    }
+
+
 
     // anything else just declare new function
 

@@ -35,6 +35,11 @@ class m_device extends CI_Model
         $this->db->update($table, $data);
     }
 
+    public function add($data, $table)
+    {
+        $this->db->insert($table, $data);
+    }
+
     function editdata($id_device, $id_user = null)
     {
         $condition = array(

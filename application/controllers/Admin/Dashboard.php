@@ -25,7 +25,9 @@ class Dashboard extends CI_Controller
         // misal jika dia bukan type admin, maka redirect ke halaman "Ups kamu tyda bole akses"
 
         $this->load->library('session');
+        $this->load->model('m_auth');
         $this->load->model('m_payment');
+
 
         /**
          * ini di buat pas login, generate session
@@ -54,6 +56,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+        $data["name"] = $this->m_auth->getdatabyId($this->session->id);
         $data["user"] = $this->m_payment->getbyIduser();
         $data["pengepul"] = $this->m_payment->getbyIdpengepul();
         $this->load->view('admin/dashboard', $data);

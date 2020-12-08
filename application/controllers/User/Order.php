@@ -55,29 +55,57 @@ class Order extends CI_Controller
             'telp'      =>  $this->input->post('telp'),
             'id_pengepul' => $this->input->post('pilihpengepul'),
             'harga' => $this->input->post('price'),
-            'status' => 0 //  1 = sedang proses; 2 = selesai; 3 = ditolak
+            'status' => 0, //  1 = sedang proses; 2 = selesai; 3 = ditolak
+            'date' => date('y-m-d')
         );
-        $this->db->insert('ordering', $data);
+        $this->m_order->ordering($data, 'ordering');
         redirect('user/dashboard');
     }
 
     public function order_valid()
     {
         $data = array(
+            //    'id' => $id_ordering,
             'status' => 2
         );
         $this->db->update('ordering', $data);
         redirect('user/dashboard');
     }
 
+    public function order_invalid($id_ordering)
+    {
+        $data = array(
+            'id' => $id_ordering,
+        );
+        $this->m_order->delete_order($data, 'ordering');
+        // $this->m_order->orderdata($id_device);
+        redirect('user/dashboard');
+
+        /**
+         * select id order
+         * $order = get order by id (model)
+         * 
+         * dapatin id device dari id order itu
+         * $id_device = $order->id_device
+         * 
+         * terus hapus order by id order nya
+         * 
+         * delete order by id (model)
+         * 
+         * redirect('user/order/for/id_device')
+         */
+    }
+
     public function verif_pickup()
     {
+        $data["name"] = $this->m_auth->getdatabyId($this->session->id);
         $data["getbyStatus"] = $this->m_order->getbyStatus($this->session->id);
         $this->load->view('user/Notification', $data);
     }
 
     public function history()
     {
+        $data["name"] = $this->m_auth->getdatabyId($this->session->id);
         $data["history"] = $this->m_payment->userhistory($this->session->id);
         $this->load->view('user/History', $data);
     }

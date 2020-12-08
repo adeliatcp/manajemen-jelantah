@@ -22,6 +22,7 @@ class Transaction extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('m_auth');
         $this->load->model('m_payment');
 
         $user = $this->session->userdata('id_role');
@@ -50,24 +51,27 @@ class Transaction extends CI_Controller
         $status_code = filter_var($bool_pay, FILTER_VALIDATE_BOOLEAN) ? 2 : 3;
 
         // dapatin 1 row data dari tabel payment dimana id = id_payment
-        $payment = $this->m_payment->getById($id_payment)->result();
+        $payment = $this->m_payment->getById($id_payment)->result()[0];
         // ambil 3 data (id_user, id_pengepul, bill)
         $id_user = $payment->id_user;
         $id_pengepul = $payment->id_pengepul;
         $bill = $payment->bill;
         // proses saldo 1 -> pengepul dicek dulu saldonya cukup atau tidak, kalau ngga cukup return, kalau cukup diproses
         $bool_saldo = $this->m_payment->update_saldo($id_pengepul, $bill); // false
-        if ($bool_saldo == false) return;
+        //if ($bool_saldo == false) return;
         // proses saldo 2 -> hanya akan diproses kalau proses saldo 1 tidak return
+        $this->m_payment->update_payment($id_payment, $status_code);
         $this->m_payment->update_saldo($id_user, $bill); // false 
 
-        $this->m_payment->update_payment($id_payment, $status_code);
+
         redirect('admin/dashboard');
     }
 
     public function history()
     {
+        $data["name"] = $this->m_auth->getdatabyId($this->session->id);
         $data['history'] = $this->m_payment->verif();
+        $data['pengepul'] = $this->m_payment->getnamepengepul();
         //$data = $this->m_payment->saldouser();
         $this->load->view('admin/History', $data);
     }
